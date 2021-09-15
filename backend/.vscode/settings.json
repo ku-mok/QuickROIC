@@ -4,7 +4,8 @@
         "openpyxl",
         "quickroic",
         "roic",
-        "speeda"
+        "speeda",
+        "wacc"
     ],
     "python.testing.unittestArgs": [
         "-v",
