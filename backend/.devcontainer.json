@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "../.devcontainer/docker-compose.yml"
+  ],
+  "service": "backend",
+  "workspaceFolder": "/workspace/backend",
+  "settings": {},
+"shutdownAction": "none",
+"extensions": [
+	"ms-python.vscode-pylance",
+	"streetsidesoftware.code-spell-checker",
+	"njpwerner.autodocstring"
+]
+}
