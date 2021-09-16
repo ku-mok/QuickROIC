@@ -1,23 +1,5 @@
 import pandas as pd
-
-
-def calc_average(df: pd.DataFrame, target_col: str) -> pd.DataFrame:
-    """平残を計算する
-
-    Args:
-        df (pd.DataFrame): 計算を行うデータフレームで、年度と企業名称、平残を計算する対象の列が必要
-        target_col (str): 平残を計算する対象の列
-
-    Returns:
-        pd.DataFrame: 計算された平残が格納されたデータフレームで、年度、企業名称、対象の列_平残の3列を含む
-    """
-    return df\
-        .assign(prior_year=lambda d: d.年度 - 1)\
-        .merge(df[["年度", "企業名称"] + [target_col]],
-               left_on=["企業名称", "prior_year"], right_on=["企業名称", "年度"],
-               suffixes=("", "_prior"))\
-        .assign(ave=lambda d: (d[target_col] + d[target_col+"_prior"])/2)[["年度", "企業名称", "ave"]]\
-        .rename(columns={"ave": target_col+"_平残"})
+from .utility import calc_average
 
 
 def calc_roic_wacc(df: pd.DataFrame,
@@ -50,3 +32,28 @@ def calc_roic_wacc(df: pd.DataFrame,
         .merge(roic, on=["企業名称", "年度"])\
         .assign(EVAスプレッド=lambda d: d.ROIC - d.WACC)
     return roic_wacc.sort_values(["企業名称", "年度"])
+
+
+def calc_roic_tree_drivers(df: pd.DataFrame) -> pd.DataFrame:
+    df_with_drivers = df.copy()
+    # ストック系の指標を平残化(AP, AR, FA, WIP)
+    stock_average = [
+        calc_average(df, target_col="売上債権"),
+        calc_average(df, target_col="固定資産"),
+        calc_average(df, target_col="買入債務"),
+        calc_average(df, target_col="棚卸資産")
+    ]
+    for s in stock_average:
+        df_with_drivers = df.merge(s, on=["企業名称", "年度"], how="left")
+    # 比率系のドライバの設定　分子-分母-ドライバの名称のタプルの配列で指定
+    ratio_drivers = [("売上原価", "売上高合計", "売上原価率"),
+                     ("販売費及び一般管理費", "売上高合計", "販管費率"),
+                     ("NOPAT", "売上高合計", "NOPATマージン"),
+                     ("売上高合計", "投下資本_平残", "投下資本回転率"),
+                     ("売上高合計", "固定資産_平残", "固定資産回転率"),
+                     ("売上高合計", "売上債権_平残", "売上債権回転率"),
+                     ("売上原価", "買入債務_平残", "仕入債務回転率"),
+                     ("売上高合計", "棚卸資産_平残", "棚卸資産回転率")]
+    for d in ratio_drivers:
+        df_with_drivers[d[2]] = df_with_drivers[d[0]] / df_with_drivers[d[1]]
+    return df_with_drivers
