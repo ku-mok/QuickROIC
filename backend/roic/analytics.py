@@ -36,15 +36,16 @@ def calc_roic_wacc(df: pd.DataFrame,
 
 def calc_roic_tree_drivers(df: pd.DataFrame) -> pd.DataFrame:
     df_with_drivers = df.copy()
-    # ストック系の指標を平残化(AP, AR, FA, WIP)
+    # ストック系の指標を平残化(AP, AR, FA, WIP, IC)
     stock_average = [
         calc_average(df, target_col="売上債権"),
         calc_average(df, target_col="固定資産"),
         calc_average(df, target_col="買入債務"),
-        calc_average(df, target_col="棚卸資産")
+        calc_average(df, target_col="棚卸資産"),
+        calc_average(df, target_col="投下資本")
     ]
     for s in stock_average:
-        df_with_drivers = df.merge(s, on=["企業名称", "年度"], how="left")
+        df_with_drivers = df_with_drivers.merge(s, on=["企業名称", "年度"], how="left")
     # 比率系のドライバの設定　分子-分母-ドライバの名称のタプルの配列で指定
     ratio_drivers = [("売上原価", "売上高合計", "売上原価率"),
                      ("販売費及び一般管理費", "売上高合計", "販管費率"),
