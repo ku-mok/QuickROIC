@@ -11,6 +11,7 @@
 "extensions": [
 	"ms-python.vscode-pylance",
 	"streetsidesoftware.code-spell-checker",
-	"njpwerner.autodocstring"
+	"njpwerner.autodocstring",
+	"brainfit.vscode-coverage-highlighter"
 ]
 }

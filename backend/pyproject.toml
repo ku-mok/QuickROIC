@@ -15,6 +15,7 @@ openpyxl = "^3.0.8"
 autopep8 = "^1.5.7"
 mypy = "^0.910"
 flake8 = "^3.9.2"
+coverage = "^5.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
