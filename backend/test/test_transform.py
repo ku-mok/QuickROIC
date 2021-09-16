@@ -1,6 +1,7 @@
 import unittest
 from roic.transform import speeda_excel_to_dataframe
 from pandas.testing import assert_frame_equal
+from roic import dataframe_to_dict, dict_to_dataframe
 import pandas as pd
 import os
 
@@ -163,3 +164,23 @@ class TestSpeedaTransform(unittest.TestCase):
             "β": float,
         })
         assert_frame_equal(actual, expect, check_like=True)
+
+    def test_unaltered_after_df_to_dict_df(self):
+        # データフレームから辞書・辞書からデータフレームが逆変換になっているかを確認
+        input = pd.DataFrame.from_dict(
+            {'企業名称': ['Sample1']*3 + ['Sample2']*3 + ['Sample3']*3,
+             '年度': [2014, 2015, 2016]*3,
+             '指標1': [1, 3, 5, 7, 9, 11, 13, 15, 17],
+             '指標2': [2, 4, 5, 7, 9, 12, 15, 15, 17]
+             })
+        assert_frame_equal(input, dict_to_dataframe(dataframe_to_dict(input)), check_like=True)
+
+    def test_select_columns(self):
+        input = pd.DataFrame.from_dict(
+            {'企業名称': ['Sample1']*3 + ['Sample2']*3 + ['Sample3']*3,
+             '年度': [2014, 2015, 2016]*3,
+             '指標1': [1, 3, 5, 7, 9, 11, 13, 15, 17],
+             '指標2': [2, 4, 5, 7, 9, 12, 15, 15, 17]
+             })
+        assert_frame_equal(input.drop(columns=["指標2"]), dict_to_dataframe(
+            dataframe_to_dict(input, columns=["指標1"])), check_like=True)

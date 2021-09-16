@@ -1,6 +1,9 @@
+from __future__ import annotations
 """データの変形を行うモジュール
 """
 import pandas as pd
+import itertools
+from typing import Literal
 
 
 def speeda_excel_to_dataframe(book_path_list: list[str]) -> pd.DataFrame:
@@ -58,3 +61,42 @@ def speeda_excel_to_dataframe(book_path_list: list[str]) -> pd.DataFrame:
     company_master = company_master.apply(lambda x: pd.to_numeric(x, errors='ignore'))
     # マスタ系のデータと統合して返す
     return company_data.merge(company_master, on="企業名称", how="left")
+
+
+def dataframe_to_dict(df: pd.DataFrame, columns: list[str] | Literal["all"] = "all"):
+    if columns == "all":
+        df = df.copy()
+    else:
+        df = df[['企業名称', '年度'] + columns]
+    # 年度・指標を横、企業名称を縦にした上で辞書に変換
+    df_dict = df.set_index(["企業名称", "年度"])\
+        .stack()\
+        .reset_index()\
+        .rename(columns={"level_2": "指標名", 0: "値"})\
+        .pivot_table(index=["企業名称"], columns=["年度", "指標名"], aggfunc="sum")\
+        .stack(0)\
+        .reset_index(1)\
+        .drop(columns="level_1")\
+        .to_dict("index")
+    # GraphQLで扱いやすい辞書に変換
+    return [
+        {
+            "company_name": company_name,
+            "metrics": [{
+                "year": k[0],
+                "metrics_name": k[1],
+                "value": v
+            } for k, v in value.items()]
+        }
+        for company_name, value in df_dict.items()
+    ]
+
+
+def dict_to_dataframe(input_dict):
+
+    tmp = pd.DataFrame(
+        list(itertools.chain.from_iterable(
+            [[m | {"company_name": item["company_name"]} for m in item['metrics']] for item in input_dict]))
+    ).pivot_table(index=["company_name", "year"], columns=["metrics_name"], aggfunc="sum")
+    tmp.columns = [c[1] for c in tmp.columns]
+    return tmp.reset_index().rename(columns={"company_name": "企業名称", "year": "年度"})
