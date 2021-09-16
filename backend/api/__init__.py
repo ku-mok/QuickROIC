@@ -1,3 +1,1 @@
-from .scheme import schema
-
-__all__ = ["schema"]
+from .query import Query
