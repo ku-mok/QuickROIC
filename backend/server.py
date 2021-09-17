@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from starlette.graphql import GraphQLApp
+from starlette_graphene3 import GraphQLApp
 from api import schema
 
 app = FastAPI()
