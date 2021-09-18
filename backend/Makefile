@@ -5,4 +5,4 @@ test:
 coverage:
 	coverage report -m
 start:
-	uvicorn server:app --reload
+	uvicorn api.server:app --reload
