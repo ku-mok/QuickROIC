@@ -1,3 +1,4 @@
+from test.Mixin.graphqlfileupload import GraphQLFileUploadTestMixin
 from roic.transform import dataframe_to_dict, speeda_excel_to_dataframe
 import unittest
 from fastapi.testclient import TestClient
@@ -5,10 +6,18 @@ from api.server import app
 import json
 import os
 
-client = TestClient(app)
 
+class MutationTest(unittest.TestCase, GraphQLFileUploadTestMixin):
+    def setUp(self) -> None:
+        client = TestClient(app)
 
-class MutationTest(unittest.TestCase):
+        def client_post(graphql_url, data, files, headers=None):
+            if headers:
+                return client.post(graphql_url, data, files=files, headers=headers)
+            else:
+                return client.post(graphql_url, data, files=files)
+        self.client_post = client_post
+
     def test_single_excel_upload(self):
         test_file_path = os.path.join(
             os.path.dirname(__file__), "test_excel",
@@ -30,27 +39,26 @@ class MutationTest(unittest.TestCase):
                 }
              }
         """
-        response = client.post(
-            '/graphql',
-            data={
-                'operations': json.dumps({
-                    'query': query,
-                    'variables': {
-                        'file': None,
-                    }
-                }),
-                "map": json.dumps({
-                    "file": ["variables.file"]
-                })
-            },
-            files={
-                'file': ("file", test_file),
-            }
-        )
-        # 正常処理完了の確認: 200で帰ってきてエラーがなく、okがTrue
-        self.assertEqual(response.status_code, 200)
-        assert "errors" not in response.json()
-        assert response.json()["data"]["uploadSpeedaExcel"]["ok"]
+        # response = self.client.post(
+        #     '/graphql',
+        #     data={
+        #         'operations': json.dumps({
+        #             'query': query,
+        #             'variables': {
+        #                 'file': None,
+        #             }
+        #         }),
+        #         "map": json.dumps({
+        #             "file": ["variables.file"]
+        #         })
+        #     },
+        #     files={
+        #         'file':  test_file,
+        #     }
+        # )
+        response = self.file_query(query, files={"file": test_file})
+        # 正常処理完了の確認
+        self.assertResponseNoErrors(response)
         # エクセルを正しくパースして返しているかの確認
         expected_compnay_data = [
             {

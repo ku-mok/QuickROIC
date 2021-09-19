@@ -17,6 +17,7 @@ uvicorn = "^0.15.0"
 starlette-graphene3 = "^0.5.1"
 websockets = "^10.0"
 python-multipart = "^0.0.5"
+promise = "^2.3"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.7"
