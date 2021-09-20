@@ -81,7 +81,7 @@ def dataframe_to_dict(df: pd.DataFrame, columns: list[str] | Literal["all"] = "a
         .stack(0)\
         .reset_index(1)\
         .drop(columns="level_1")\
-        .applymap(lambda x: int(x) if int(x) == x else x)\
+        .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)\
         .to_dict("index")
     # GraphQLで扱いやすい辞書に変換
     return [
@@ -102,6 +102,7 @@ def dict_to_dataframe(input_dict):
     tmp = pd.DataFrame(
         list(itertools.chain.from_iterable(
             [[m | {"company_name": item["company_name"]} for m in item['metrics']] for item in input_dict]))
-    ).pivot_table(index=["company_name", "year"], columns=["metrics_name"], aggfunc="sum")
+    ).pivot_table(index=["company_name", "year"], columns=["metrics_name"], aggfunc="sum")\
+     .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)
     tmp.columns = [c[1] for c in tmp.columns]
     return tmp.reset_index().rename(columns={"company_name": "企業名称", "year": "年度"})
