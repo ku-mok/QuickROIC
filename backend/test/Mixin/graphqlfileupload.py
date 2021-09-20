@@ -37,8 +37,6 @@ def file_graphql_query(
         'operations': json.dumps(body),
         'map': json.dumps(map_),
     }
-
-    # data.update(files)
     if headers:
         resp = client_post(graphql_url, data, files ** headers)
     else:

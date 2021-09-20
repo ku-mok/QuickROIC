@@ -1,9 +1,7 @@
 from test.Mixin.graphqlfileupload import GraphQLFileUploadTestMixin
-from roic.transform import dataframe_to_dict, speeda_excel_to_dataframe
 import unittest
 from fastapi.testclient import TestClient
 from api.server import app
-import json
 import os
 
 
@@ -17,50 +15,7 @@ class MutationTest(unittest.TestCase, GraphQLFileUploadTestMixin):
             else:
                 return client.post(graphql_url, data, files=files)
         self.client_post = client_post
-
-    def test_single_excel_upload(self):
-        test_file_path = os.path.join(
-            os.path.dirname(__file__), "test_excel",
-            "SpeedaTransformTestInput.xlsx")
-        with open(test_file_path, "rb") as f:
-            test_file = f.read()
-        query = """
-            mutation UploadSingleExcel($file: Upload!){
-                uploadSpeedaExcel(file: $file){
-                    ok
-                    companyData{
-                        companyName
-                            metrics {
-                                year
-                                metricsName
-                                value
-                            }
-                    }
-                }
-             }
-        """
-        # response = self.client.post(
-        #     '/graphql',
-        #     data={
-        #         'operations': json.dumps({
-        #             'query': query,
-        #             'variables': {
-        #                 'file': None,
-        #             }
-        #         }),
-        #         "map": json.dumps({
-        #             "file": ["variables.file"]
-        #         })
-        #     },
-        #     files={
-        #         'file':  test_file,
-        #     }
-        # )
-        response = self.file_query(query, files={"file": test_file})
-        # 正常処理完了の確認
-        self.assertResponseNoErrors(response)
-        # エクセルを正しくパースして返しているかの確認
-        expected_compnay_data = [
+        self.expected_company_data = [
             {
                 "companyName": "Sample1",
                 "metrics": [
@@ -437,5 +392,37 @@ class MutationTest(unittest.TestCase, GraphQLFileUploadTestMixin):
                 ]
             }
         ]
+
+    def test_two_upload(self):
+        test_files_name = [
+            "SpeedaTransformTestInput_splitted_1.xlsx",
+            "SpeedaTransformTestInput_splitted_2.xlsx",
+        ]
+        test_files_path = [os.path.join(os.path.dirname(__file__), "test_excel", file_name)
+                           for file_name in test_files_name]
+        test_files = []
+        for path in test_files_path:
+            with open(path, "rb") as f:
+                test_files.append(f.read())
+        query = """
+            mutation UploadSingleExcel($files: [Upload!]!){
+                uploadSpeedaExcel(files: $files){
+                    ok
+                    companyData{
+                        companyName
+                            metrics {
+                                year
+                                metricsName
+                                value
+                            }
+                    }
+                }
+             }
+        """
+        response = self.file_query(query, variables={"files": [None, None]}, files={
+                                   "files.0": test_files[0], "files.1": test_files[1]})
+        # 正常処理完了の確認
+        self.assertResponseNoErrors(response)
+        # エクセルを正しくパースして返しているかの確認
         actual_company_data = response.json()["data"]["uploadSpeedaExcel"]["companyData"]
-        self.assertEqual(expected_compnay_data, actual_company_data)
+        self.assertEqual(self.expected_company_data, actual_company_data)

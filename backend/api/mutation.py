@@ -4,21 +4,30 @@ from api.object import CompanyData
 from roic.transform import dataframe_to_dict, speeda_excel_to_dataframe
 from graphene import Mutation, Boolean, ObjectType
 from graphene_file_upload.scalars import Upload
-from tempfile import NamedTemporaryFile
+from tempfile import NamedTemporaryFile, _TemporaryFileWrapper
 
 
 class FileUploadMutation(Mutation):
     class Arguments:
-        file = Upload(required=True)
+        files = List(Upload)
     ok = Boolean()
     company_data = Field(List(CompanyData))
 
-    async def mutate(self, info, file):
-        with NamedTemporaryFile(delete=True) as tmp_file:
+    async def mutate(self, info, files):
+        tmp_file_list: list[_TemporaryFileWrapper] = []
+        for file in files:
             file_content = await(file.read())
+            tmp_file = NamedTemporaryFile()
             tmp_file.write(file_content)
-            df = speeda_excel_to_dataframe([tmp_file.name])
+            tmp_file_list.append(tmp_file)
+        try:
+            df = speeda_excel_to_dataframe([f.name for f in tmp_file_list])
             data = dataframe_to_dict(df)
+        except Exception as e:
+            raise e
+        finally:
+            for t in tmp_file_list:
+                t.close()
         return FileUploadMutation(ok=True, company_data=data)
 
 
