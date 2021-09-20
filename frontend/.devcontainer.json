@@ -10,7 +10,8 @@
   "extensions": [
 	"orta.vscode-jest",
 	"esbenp.prettier-vscode",
-	"dbaeumer.vscode-eslint"
+	"dbaeumer.vscode-eslint",
+	"jpoissonnier.vscode-styled-components"
 ],
   "shutdownAction": "none"
 }

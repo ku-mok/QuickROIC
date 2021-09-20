@@ -1,25 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ThemeProvider as SsThemeProvider } from "styled-components";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import theme from "./theme";
+import Home from "./page/Home";
+import Header from "./organisms/Header";
+import { useState } from "react";
+import SideMenu from "./organisms/SideMenu";
+import SideMenuItem from "./molecules/SideMenuItem";
+import { AddCircle } from "@material-ui/icons";
 
+const Providers: React.FC = (props) => (
+  <BrowserRouter>
+    <MuiThemeProvider theme={theme}>
+      <SsThemeProvider theme={theme}>{props.children}</SsThemeProvider>
+    </MuiThemeProvider>
+  </BrowserRouter>
+);
 function App() {
+  const [sideMenuOpen, setSideMenuOpen] = useState(false);
+  const handleSideMenuOpen = () => {
+    setSideMenuOpen(true);
+  };
+  const handleSideMenuClose = () => {
+    setSideMenuOpen(false);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Providers>
+      <Header handleIconButtonClick={handleSideMenuOpen}>QuickRoic</Header>
+      <SideMenu
+        open={sideMenuOpen}
+        onOpen={handleSideMenuOpen}
+        onClose={handleSideMenuClose}
+      >
+        <SideMenuItem icon={<AddCircle />} linkTo="/new">
+          新規分析
+        </SideMenuItem>
+      </SideMenu>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+      </Switch>
+    </Providers>
   );
 }
 
