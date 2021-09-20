@@ -1,5 +1,10 @@
 version: "3"
 services:
+  frontend:
+    volumes:
+      - .:/workspace:cached
+      - node_modules:/workspace/frontend/node_modules
+    command: /bin/sh -c "while sleep 1000; do :; done"
   backend:
     volumes:
       - .:/workspace:cached
