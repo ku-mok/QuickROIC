@@ -18,7 +18,7 @@ const UploadButton: React.FC<UploadButtonProps> = (props) => (
       fullWidth
     >
       {props.loading && <CircularProgress size={24} />}
-      {!props.loading && !props.successText && props.children}
+      {!props.loading && !props.success && props.children}
       {props.success && props.successText}
     </Button>
   </>

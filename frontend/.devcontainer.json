@@ -11,7 +11,9 @@
 	"orta.vscode-jest",
 	"esbenp.prettier-vscode",
 	"dbaeumer.vscode-eslint",
-	"jpoissonnier.vscode-styled-components"
+	"jpoissonnier.vscode-styled-components",
+	"streetsidesoftware.code-spell-checker",
+	"wayou.vscode-todo-highlight"
 ],
   "shutdownAction": "none"
 }
