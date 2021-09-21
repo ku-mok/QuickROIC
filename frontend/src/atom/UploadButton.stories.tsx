@@ -20,4 +20,7 @@ export const Loading = Template.bind({});
 Loading.args = { loading: true };
 
 export const Success = Template.bind({});
-Success.args = { success: true, successText: "Success" };
+Success.args = { successText: "Success" };
+
+export const Error = Template.bind({});
+Error.args = { errorText: "Error" };
