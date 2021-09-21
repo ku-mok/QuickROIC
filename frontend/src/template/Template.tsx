@@ -8,6 +8,7 @@ import styled from "styled-components";
 const ContentContainer = styled.div`
   margin-top: 1ex;
   margin-left: 1vw;
+  margin-right: 3vw;
 `;
 const Template: React.FC<{ children: React.ReactNode }> = (props) => {
   const [sideMenuOpen, setSideMenuOpen] = useState(false);
