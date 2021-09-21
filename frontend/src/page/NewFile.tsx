@@ -3,7 +3,23 @@ import Template from "../template/Template";
 import { Typography } from "@mui/material";
 import UploadButton from "../atom/UploadButton";
 import UploadArea from "../molecules/UploadArea";
+import gql from "graphql-tag";
+import { useUploadExcelMutation } from "../generated/graphql";
 
+export const FILE_UPLOAD = gql`
+  mutation UploadExcel($files: [Upload!]!) {
+    uploadSpeedaExcel(files: $files) {
+      companyData {
+        companyName
+        metrics {
+          year
+          value
+          year
+        }
+      }
+    }
+  }
+`;
 export type NewFilePresProps = {
   acceptedFiles: File[];
   setAcceptedFiles: (files: File[]) => void;
@@ -13,6 +29,7 @@ export type NewFilePresProps = {
 };
 
 export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
+  const [uploadFunc, { data, loading, error }] = useUploadExcelMutation();
   return (
     <Template>
       <Typography variant="h5">新規データ分析</Typography>
