@@ -7,4 +7,4 @@ lint:
 coverage:
 	coverage report -m
 start:
-	uvicorn api.server:app --reload
+	uvicorn api.server:app --host 0.0.0.0 --reload

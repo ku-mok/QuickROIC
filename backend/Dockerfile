@@ -9,3 +9,4 @@ ENV PYTHONUNBUFFERED=1 \
     POETRY_VIRTUALENVS_CREATE=false 
 COPY ./pyproject.toml ./poetry.*  /app/
 RUN apt-get update && apt-get install -y make git && pip install poetry && poetry install
+CMD make start
