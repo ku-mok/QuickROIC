@@ -5,9 +5,9 @@ import {
   IconButtonProps,
   Toolbar,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import styled from "styled-components";
-import { Menu } from "@material-ui/icons";
+import { Menu } from "@mui/icons-material";
 import { useHistory } from "react-router";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);

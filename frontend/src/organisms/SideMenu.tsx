@@ -1,4 +1,4 @@
-import { SwipeableDrawer, List, SwipeableDrawerProps } from "@material-ui/core";
+import { SwipeableDrawer, List, SwipeableDrawerProps } from "@mui/material";
 import React from "react";
 
 export type SideMenuProps = {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../organisms/Header";
 import SideMenu from "../organisms/SideMenu";
 import SideMenuItem from "../molecules/SideMenuItem";
-import { AddCircle } from "@material-ui/icons";
+import { AddCircle } from "@mui/icons-material";
 import styled from "styled-components";
 
 const ContentContainer = styled.div`

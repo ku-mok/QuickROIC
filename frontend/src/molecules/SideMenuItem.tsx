@@ -1,4 +1,4 @@
-import { ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
 import { useHistory } from "react-router";
 
