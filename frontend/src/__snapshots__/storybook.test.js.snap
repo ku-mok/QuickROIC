@@ -1,0 +1,667 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots NewFilePage Default 1`] = `
+Array [
+  <header
+    className="MuiPaper-root-jqRKNJ dfuyOL MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root-gCJNDv jsxdJH MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root-hLnTOG SHPyl MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular"
+    >
+      <button
+        className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiIconButton-root-jYLena hvnHFY MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeMedium"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-ffGNMi ufROg MuiSvgIcon-root MuiSvgIcon-fontSizeMedium"
+          data-testid="MenuIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>
+        <span
+          className="MuiTouchRipple-root-iekols hjNZuK MuiTouchRipple-root"
+        />
+      </button>
+      <h5
+        className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+        onClick={[Function]}
+      >
+        QuickRoic
+      </h5>
+    </div>
+  </header>,
+  <div
+    className="sc-iqHYmW bcOBlh"
+  />,
+  <div
+    className="sc-kEjbQP gmHTpI PrivateSwipeArea-root"
+    style={
+      Object {
+        "width": 20,
+      }
+    }
+  />,
+  <div
+    className="sc-crrszt goDgnJ"
+  >
+    <h5
+      className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+    >
+      新規データ分析
+    </h5>
+    <div>
+      <div
+        className="MuiPaper-root-jqRKNJ gSUtMt MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 sc-dQoVA gWhKaH"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragEnter={[Function]}
+        onDragLeave={[Function]}
+        onDragOver={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <input
+          accept=".xlsx"
+          autoComplete="off"
+          multiple={true}
+          onChange={[Function]}
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex={-1}
+          type="file"
+        />
+        <div
+          className="sc-bqyKOL fPAHzz"
+        >
+          分析対象のファイルをドラッグアンドドロップするかクリックして選択してください
+        </div>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root Mui-disabled MuiButton-root-gxQIQh jYZmrU"
+      disabled={true}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={-1}
+      type="button"
+    >
+      アップロードして分析を実施
+    </button>
+  </div>,
+]
+`;
+
+exports[`Storyshots NewFilePage File Selected 1`] = `
+Array [
+  <header
+    className="MuiPaper-root-jqRKNJ dfuyOL MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root-gCJNDv jsxdJH MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root-hLnTOG SHPyl MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular"
+    >
+      <button
+        className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiIconButton-root-jYLena hvnHFY MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeMedium"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-ffGNMi ufROg MuiSvgIcon-root MuiSvgIcon-fontSizeMedium"
+          data-testid="MenuIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>
+        <span
+          className="MuiTouchRipple-root-iekols hjNZuK MuiTouchRipple-root"
+        />
+      </button>
+      <h5
+        className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+        onClick={[Function]}
+      >
+        QuickRoic
+      </h5>
+    </div>
+  </header>,
+  <div
+    className="sc-iqHYmW bcOBlh"
+  />,
+  <div
+    className="sc-kEjbQP gmHTpI PrivateSwipeArea-root"
+    style={
+      Object {
+        "width": 20,
+      }
+    }
+  />,
+  <div
+    className="sc-crrszt goDgnJ"
+  >
+    <h5
+      className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+    >
+      新規データ分析
+    </h5>
+    <div>
+      <div
+        className="MuiPaper-root-jqRKNJ gSUtMt MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 sc-dQoVA gWhKaH"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragEnter={[Function]}
+        onDragLeave={[Function]}
+        onDragOver={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <input
+          accept=".xlsx"
+          autoComplete="off"
+          multiple={true}
+          onChange={[Function]}
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex={-1}
+          type="file"
+        />
+        <div
+          className="sc-bqyKOL fPAHzz"
+        >
+          <ol>
+            <li>
+              Sample.xlsx
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root MuiButton-root-gxQIQh jYZmrU"
+      disabled={false}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      アップロードして分析を実施
+      <span
+        className="MuiTouchRipple-root-iekols hjNZuK MuiTouchRipple-root"
+      />
+    </button>
+  </div>,
+]
+`;
+
+exports[`Storyshots NewFilePage Loading 1`] = `
+Array [
+  <header
+    className="MuiPaper-root-jqRKNJ dfuyOL MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root-gCJNDv jsxdJH MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root-hLnTOG SHPyl MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular"
+    >
+      <button
+        className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiIconButton-root-jYLena hvnHFY MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeMedium"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-ffGNMi ufROg MuiSvgIcon-root MuiSvgIcon-fontSizeMedium"
+          data-testid="MenuIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>
+        <span
+          className="MuiTouchRipple-root-iekols hjNZuK MuiTouchRipple-root"
+        />
+      </button>
+      <h5
+        className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+        onClick={[Function]}
+      >
+        QuickRoic
+      </h5>
+    </div>
+  </header>,
+  <div
+    className="sc-iqHYmW bcOBlh"
+  />,
+  <div
+    className="sc-kEjbQP gmHTpI PrivateSwipeArea-root"
+    style={
+      Object {
+        "width": 20,
+      }
+    }
+  />,
+  <div
+    className="sc-crrszt goDgnJ"
+  >
+    <h5
+      className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+    >
+      新規データ分析
+    </h5>
+    <div>
+      <div
+        className="MuiPaper-root-jqRKNJ gSUtMt MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 sc-dQoVA gWhKaH"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragEnter={[Function]}
+        onDragLeave={[Function]}
+        onDragOver={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <input
+          accept=".xlsx"
+          autoComplete="off"
+          multiple={true}
+          onChange={[Function]}
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex={-1}
+          type="file"
+        />
+        <div
+          className="sc-bqyKOL fPAHzz"
+        >
+          <ol>
+            <li>
+              Sample.xlsx
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root Mui-disabled MuiButton-root-gxQIQh jYZmrU"
+      disabled={true}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={-1}
+      type="button"
+    >
+      <span
+        className="MuiCircularProgress-root-lieVZj dvIXuQ MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary"
+        role="progressbar"
+        style={
+          Object {
+            "height": 24,
+            "width": 24,
+          }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg-kCBcaX dKLwFq MuiCircularProgress-svg"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            className="MuiCircularProgress-circle-cFBlhL fuNjJu MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
+      </span>
+    </button>
+  </div>,
+]
+`;
+
+exports[`Storyshots NewFilePage Success 1`] = `
+Array [
+  <header
+    className="MuiPaper-root-jqRKNJ dfuyOL MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root-gCJNDv jsxdJH MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root-hLnTOG SHPyl MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular"
+    >
+      <button
+        className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiIconButton-root-jYLena hvnHFY MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeMedium"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-ffGNMi ufROg MuiSvgIcon-root MuiSvgIcon-fontSizeMedium"
+          data-testid="MenuIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>
+        <span
+          className="MuiTouchRipple-root-iekols hjNZuK MuiTouchRipple-root"
+        />
+      </button>
+      <h5
+        className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+        onClick={[Function]}
+      >
+        QuickRoic
+      </h5>
+    </div>
+  </header>,
+  <div
+    className="sc-iqHYmW bcOBlh"
+  />,
+  <div
+    className="sc-kEjbQP gmHTpI PrivateSwipeArea-root"
+    style={
+      Object {
+        "width": 20,
+      }
+    }
+  />,
+  <div
+    className="sc-crrszt goDgnJ"
+  >
+    <h5
+      className="MuiTypography-root-bWuLxc igmgMd MuiTypography-root MuiTypography-h5"
+    >
+      新規データ分析
+    </h5>
+    <div>
+      <div
+        className="MuiPaper-root-jqRKNJ gSUtMt MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 sc-dQoVA gWhKaH"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragEnter={[Function]}
+        onDragLeave={[Function]}
+        onDragOver={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <input
+          accept=".xlsx"
+          autoComplete="off"
+          multiple={true}
+          onChange={[Function]}
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex={-1}
+          type="file"
+        />
+        <div
+          className="sc-bqyKOL fPAHzz"
+        >
+          <ol>
+            <li>
+              Sample.xlsx
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root MuiButton-root-gxQIQh bjzBGh"
+      disabled={false}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      分析が完了しました
+      <span
+        className="MuiTouchRipple-root-iekols hjNZuK MuiTouchRipple-root"
+      />
+    </button>
+  </div>,
+]
+`;
+
+exports[`Storyshots UploadButton Default 1`] = `
+<button
+  className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root MuiButton-root-gxQIQh jYZmrU"
+  disabled={false}
+  onBlur={[Function]}
+  onContextMenu={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  SampleText
+</button>
+`;
+
+exports[`Storyshots UploadButton Disabled 1`] = `
+<button
+  className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root Mui-disabled MuiButton-root-gxQIQh jYZmrU"
+  disabled={true}
+  onBlur={[Function]}
+  onContextMenu={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={-1}
+  type="button"
+>
+  SampleText
+</button>
+`;
+
+exports[`Storyshots UploadButton Loading 1`] = `
+<button
+  className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root Mui-disabled MuiButton-root-gxQIQh jYZmrU"
+  disabled={true}
+  onBlur={[Function]}
+  onContextMenu={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={-1}
+  type="button"
+>
+  <span
+    className="MuiCircularProgress-root-lieVZj dvIXuQ MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary"
+    role="progressbar"
+    style={
+      Object {
+        "height": 24,
+        "width": 24,
+      }
+    }
+  >
+    <svg
+      className="MuiCircularProgress-svg-kCBcaX dKLwFq MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        className="MuiCircularProgress-circle-cFBlhL fuNjJu MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
+  </span>
+</button>
+`;
+
+exports[`Storyshots UploadButton Success 1`] = `
+<button
+  className="MuiButtonBase-root-JTLGk xjigV MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButtonBase-root MuiButton-root-gxQIQh bjzBGh"
+  disabled={false}
+  onBlur={[Function]}
+  onContextMenu={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  Success
+</button>
+`;
