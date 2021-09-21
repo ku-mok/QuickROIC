@@ -6,6 +6,7 @@ import {
 } from "@mui/material/styles";
 import theme from "./theme";
 import Home from "./page/Home";
+import NewFile from "./page/NewFile";
 
 const Providers: React.FC = (props) => (
   <BrowserRouter>
@@ -22,6 +23,9 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/new" exact>
+          <NewFile />
         </Route>
       </Switch>
     </Providers>
