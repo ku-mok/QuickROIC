@@ -33,7 +33,7 @@ export type CompanyDataInput = {
 
 export type FileUploadMutation = {
   __typename?: 'FileUploadMutation';
-  companyData?: Maybe<Array<Maybe<CompanyData>>>;
+  companyData: Array<CompanyData>;
   ok?: Maybe<Scalars['Boolean']>;
 };
 
@@ -65,9 +65,9 @@ export type MutationUploadSpeedaExcelArgs = {
 export type Query = {
   __typename?: 'Query';
   /** ROICドライバ計算を行うクエリ。dataに計算を行うデータを渡し、metricsに必要なカラムを指定する。デフォルト値（空配列）の場合すべてのカラムが帰る */
-  calcDrivers?: Maybe<Array<Maybe<CompanyData>>>;
+  calcDrivers: Array<CompanyData>;
   /** ROIC計算を行うクエリ。dataに計算を行うデータを渡し、metricsに必要なカラムを指定する。デフォルト値（空配列）の場合すべてのカラムが帰る */
-  calcRoic?: Maybe<Array<Maybe<CompanyData>>>;
+  calcRoic: Array<CompanyData>;
 };
 
 
@@ -87,7 +87,7 @@ export type UploadExcelMutationVariables = Exact<{
 }>;
 
 
-export type UploadExcelMutation = { __typename?: 'Mutation', uploadSpeedaExcel?: Maybe<{ __typename?: 'FileUploadMutation', companyData?: Maybe<Array<Maybe<{ __typename?: 'CompanyData', companyName: string, metrics?: Maybe<Array<Maybe<{ __typename?: 'Metrics', year: number, value: any, metricsName: string }>>> }>>> }> };
+export type UploadExcelMutation = { __typename?: 'Mutation', uploadSpeedaExcel?: Maybe<{ __typename?: 'FileUploadMutation', companyData: Array<{ __typename?: 'CompanyData', companyName: string, metrics?: Maybe<Array<Maybe<{ __typename?: 'Metrics', year: number, value: any, metricsName: string }>>> }> }> };
 
 
 export const UploadExcelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UploadExcel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"files"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Upload"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uploadSpeedaExcel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"files"},"value":{"kind":"Variable","name":{"kind":"Name","value":"files"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"metrics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"metricsName"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UploadExcelMutation, UploadExcelMutationVariables>;
