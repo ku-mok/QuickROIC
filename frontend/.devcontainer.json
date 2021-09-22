@@ -13,8 +13,8 @@
 	"dbaeumer.vscode-eslint",
 	"jpoissonnier.vscode-styled-components",
 	"streetsidesoftware.code-spell-checker",
-	"wayou.vscode-todo-highlight",
-	"apollographql.vscode-apollo"
+	"apollographql.vscode-apollo",
+	"gruntfuggly.todo-tree"
 ],
   "shutdownAction": "none"
 }
