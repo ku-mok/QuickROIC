@@ -16,6 +16,10 @@ it("activate button when file accepted", async () => {
   ).not.toBeDisabled();
   expect(await screen.findByText("TestFile.xlsx")).toBeInTheDocument();
 });
+/*
+ TODO: FileUploadを行うMutationのテストがうまくいかないので要調査
+ https://github.com/jaydenseric/apollo-upload-examples/issues/18では未解決のまま
+*/
 
 // ファイルのドロップイベントを発火させる
 async function fireDropEvent(

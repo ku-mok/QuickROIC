@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
+import { typePolicies } from "./store";
 
 const link = createUploadLink({ uri: process.env.REACT_APP_GRAPHQL_ENDPOINT });
 const client = new ApolloClient({
   link: link,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies,
+  }),
 });
 
 ReactDOM.render(

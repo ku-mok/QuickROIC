@@ -7,6 +7,7 @@ import UploadArea from "../molecules/UploadArea";
 import gql from "graphql-tag";
 import { useHistory } from "react-router";
 import { UploadExcelDocument } from "../generated/graphql";
+import { localCompanyDataVar } from "../store";
 
 export const UPLOAD_EXCEL = gql`
   mutation UploadExcel($files: [Upload!]!) {
@@ -59,11 +60,12 @@ const NewFile: React.FC = () => {
     UploadExcelDocument,
     {
       onCompleted(data) {
-        // TODO: ローカルの状態を更新する
-        console.info(data);
+        localCompanyDataVar(data.uploadSpeedaExcel?.companyData);
         window.setTimeout(() => history.push("/table"), 1500);
       },
-      onError(error) {},
+      onError(error) {
+        console.error(error.message);
+      },
     }
   );
   const handleUpload = async () => {
