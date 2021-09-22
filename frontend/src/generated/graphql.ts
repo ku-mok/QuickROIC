@@ -1,10 +1,8 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -89,46 +87,7 @@ export type UploadExcelMutationVariables = Exact<{
 }>;
 
 
-export type UploadExcelMutation = { __typename?: 'Mutation', uploadSpeedaExcel?: Maybe<{ __typename?: 'FileUploadMutation', companyData?: Maybe<Array<Maybe<{ __typename?: 'CompanyData', companyName: string, metrics?: Maybe<Array<Maybe<{ __typename?: 'Metrics', year: number, value: any }>>> }>>> }> };
+export type UploadExcelMutation = { __typename?: 'Mutation', uploadSpeedaExcel?: Maybe<{ __typename?: 'FileUploadMutation', companyData?: Maybe<Array<Maybe<{ __typename?: 'CompanyData', companyName: string, metrics?: Maybe<Array<Maybe<{ __typename?: 'Metrics', year: number, value: any, metricsName: string }>>> }>>> }> };
 
 
-export const UploadExcelDocument = gql`
-    mutation UploadExcel($files: [Upload!]!) {
-  uploadSpeedaExcel(files: $files) {
-    companyData {
-      companyName
-      metrics {
-        year
-        value
-        year
-      }
-    }
-  }
-}
-    `;
-export type UploadExcelMutationFn = Apollo.MutationFunction<UploadExcelMutation, UploadExcelMutationVariables>;
-
-/**
- * __useUploadExcelMutation__
- *
- * To run a mutation, you first call `useUploadExcelMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUploadExcelMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [uploadExcelMutation, { data, loading, error }] = useUploadExcelMutation({
- *   variables: {
- *      files: // value for 'files'
- *   },
- * });
- */
-export function useUploadExcelMutation(baseOptions?: Apollo.MutationHookOptions<UploadExcelMutation, UploadExcelMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UploadExcelMutation, UploadExcelMutationVariables>(UploadExcelDocument, options);
-      }
-export type UploadExcelMutationHookResult = ReturnType<typeof useUploadExcelMutation>;
-export type UploadExcelMutationResult = Apollo.MutationResult<UploadExcelMutation>;
-export type UploadExcelMutationOptions = Apollo.BaseMutationOptions<UploadExcelMutation, UploadExcelMutationVariables>;
+export const UploadExcelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UploadExcel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"files"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Upload"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uploadSpeedaExcel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"files"},"value":{"kind":"Variable","name":{"kind":"Name","value":"files"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"metrics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"metricsName"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UploadExcelMutation, UploadExcelMutationVariables>;

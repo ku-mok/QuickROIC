@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
 import Template from "../template/Template";
 import { Typography } from "@mui/material";
 import UploadButton from "../atom/UploadButton";
 import UploadArea from "../molecules/UploadArea";
 import gql from "graphql-tag";
-import { useUploadExcelMutation } from "../generated/graphql";
+import { useHistory } from "react-router";
+import { UploadExcelDocument } from "../generated/graphql";
 
-export const FILE_UPLOAD = gql`
+export const UPLOAD_EXCEL = gql`
   mutation UploadExcel($files: [Upload!]!) {
     uploadSpeedaExcel(files: $files) {
       companyData {
@@ -14,7 +16,7 @@ export const FILE_UPLOAD = gql`
         metrics {
           year
           value
-          year
+          metricsName
         }
       }
     }
@@ -24,12 +26,12 @@ export type NewFilePresProps = {
   acceptedFiles: File[];
   setAcceptedFiles: (files: File[]) => void;
   handleUpload: () => void;
-  success: boolean;
+  successText?: string;
+  errorText?: string;
   loading: boolean;
 };
 
 export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
-  const [uploadFunc, { data, loading, error }] = useUploadExcelMutation();
   return (
     <Template>
       <Typography variant="h5">新規データ分析</Typography>
@@ -38,9 +40,9 @@ export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
         setAcceptedFiles={props.setAcceptedFiles}
       />
       <UploadButton
-        success={props.success}
+        successText={props.successText}
+        errorText={props.errorText}
         loading={props.loading}
-        successText="分析が完了しました"
         disable={props.acceptedFiles.length === 0}
         handleButtonClick={props.handleUpload}
       >
@@ -52,10 +54,20 @@ export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
 
 const NewFile: React.FC = () => {
   const [acceptedFiles, setAcceptedFiles] = useState<File[]>([]);
-  const success = true;
-  const loading = true;
-  const handleUpload = () => {
-    //TODO: ファイルのアップロード処理
+  const history = useHistory();
+  const [uploadFunc, { data, loading, error }] = useMutation(
+    UploadExcelDocument,
+    {
+      onCompleted(data) {
+        // TODO: ローカルの状態を更新する
+        console.info(data);
+        window.setTimeout(() => history.push("/table"), 1500);
+      },
+      onError(error) {},
+    }
+  );
+  const handleUpload = async () => {
+    await uploadFunc({ variables: { files: acceptedFiles } });
   };
   return (
     <NewFilePres
@@ -63,8 +75,13 @@ const NewFile: React.FC = () => {
         acceptedFiles,
         setAcceptedFiles,
         handleUpload,
-        success,
+        successText: !!(!error && data)
+          ? `${data?.uploadSpeedaExcel?.companyData?.length}社のデータを読み取りました。データ確認画面に遷移します。`
+          : undefined,
         loading,
+        errorText: error
+          ? `エラーが発生しました(${error.message})。ファイルを確認の上解決しない場合は連絡をください。`
+          : undefined,
       }}
     />
   );

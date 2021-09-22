@@ -25,7 +25,7 @@ const UploadArea: React.FC<UploadAreaProps> = (props) => {
   return (
     <div ref={ref}>
       <StyledPaper {...rootProps} elevation={3}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} data-testid="dropzone" />
         {props.acceptedFiles.length === 0 ? (
           <GuideText>
             分析対象のファイルをドラッグアンドドロップするかクリックして選択してください

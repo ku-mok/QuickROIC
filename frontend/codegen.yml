@@ -1,9 +1,9 @@
 overwrite: true
-schema: "http://backend:8000/"
-documents: "src/**/*.tsx"
+schema: "http://backend:8000"
+documents: "src/**/*.{ts,tsx}"
 generates:
-  src/generated/graphql.tsx:
+  src/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
-      - "typescript-react-apollo"
+      - "typed-document-node"

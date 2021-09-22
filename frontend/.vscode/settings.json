@@ -3,5 +3,8 @@
 		"craco",
 		"Dropzone",
 		"Storyshots"
-	]
+	],
+	"files.watcherExclude": {
+		"**/generated/**": true
+	}
 }
