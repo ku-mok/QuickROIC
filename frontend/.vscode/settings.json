@@ -6,5 +6,6 @@
 	],
 	"files.watcherExclude": {
 		"**/generated/**": true
-	}
+	},
+	"jest.jestCommandLine": "yarn test"
 }
