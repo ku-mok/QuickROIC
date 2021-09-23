@@ -22,13 +22,13 @@ export type Scalars = {
 export type CompanyData = {
   __typename?: 'CompanyData';
   companyName: Scalars['String'];
-  metrics?: Maybe<Array<Maybe<Metrics>>>;
+  metrics: Metrics;
 };
 
 /** 企業のデータを表す型で企業名称とMetricsの配列を持つ */
 export type CompanyDataInput = {
   companyName: Scalars['String'];
-  metrics?: Maybe<Array<Maybe<MetricsInput>>>;
+  metrics: MetricsInput;
 };
 
 export type FileUploadMutation = {
@@ -41,15 +41,15 @@ export type FileUploadMutation = {
 export type Metrics = {
   __typename?: 'Metrics';
   metricsName: Scalars['String'];
-  value: Scalars['MetricsValue'];
-  year: Scalars['Int'];
+  metricsValues: Array<Scalars['MetricsValue']>;
+  metricsYears: Array<Scalars['Int']>;
 };
 
 /** 財務指標を表す型で年度・指標名称・値を持つ */
 export type MetricsInput = {
   metricsName: Scalars['String'];
-  value: Scalars['Float'];
-  year: Scalars['Int'];
+  metricsValues: Array<Scalars['MetricsValue']>;
+  metricsYears: Array<Scalars['Int']>;
 };
 
 export type Mutation = {
@@ -88,13 +88,7 @@ export type UploadExcelMutationVariables = Exact<{
 }>;
 
 
-export type UploadExcelMutation = { __typename?: 'Mutation', uploadSpeedaExcel?: Maybe<{ __typename?: 'FileUploadMutation', companyData: Array<{ __typename?: 'CompanyData', companyName: string, metrics?: Maybe<Array<Maybe<{ __typename?: 'Metrics', year: number, value: any, metricsName: string }>>> }> }> };
-
-export type GetLocalCompanyDataQueryVariables = Exact<{ [key: string]: never; }>;
+export type UploadExcelMutation = { __typename?: 'Mutation', uploadSpeedaExcel?: Maybe<{ __typename?: 'FileUploadMutation', companyData: Array<{ __typename?: 'CompanyData', companyName: string, metrics: { __typename?: 'Metrics', metricsName: string, metricsValues: Array<any>, metricsYears: Array<number> } }> }> };
 
 
-export type GetLocalCompanyDataQuery = { __typename?: 'Query', localCompanyData: Array<{ __typename?: 'CompanyData', companyName: string, metrics?: Maybe<Array<Maybe<{ __typename?: 'Metrics', metricsName: string, value: any, year: number }>>> }> };
-
-
-export const UploadExcelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UploadExcel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"files"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Upload"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uploadSpeedaExcel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"files"},"value":{"kind":"Variable","name":{"kind":"Name","value":"files"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"metrics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"metricsName"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UploadExcelMutation, UploadExcelMutationVariables>;
-export const GetLocalCompanyDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getLocalCompanyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"localCompanyData"},"directives":[{"kind":"Directive","name":{"kind":"Name","value":"client"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"metrics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metricsName"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"year"}}]}}]}}]}}]} as unknown as DocumentNode<GetLocalCompanyDataQuery, GetLocalCompanyDataQueryVariables>;
+export const UploadExcelDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UploadExcel"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"files"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Upload"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uploadSpeedaExcel"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"files"},"value":{"kind":"Variable","name":{"kind":"Name","value":"files"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"metrics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"metricsName"}},{"kind":"Field","name":{"kind":"Name","value":"metricsValues"}},{"kind":"Field","name":{"kind":"Name","value":"metricsYears"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UploadExcelMutation, UploadExcelMutationVariables>;

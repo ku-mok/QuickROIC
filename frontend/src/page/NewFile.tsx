@@ -15,9 +15,9 @@ export const UPLOAD_EXCEL = gql`
       companyData {
         companyName
         metrics {
-          year
-          value
           metricsName
+          metricsValues
+          metricsYears
         }
       }
     }
