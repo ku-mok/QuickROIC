@@ -45,7 +45,7 @@ def calc_roic_tree_drivers(df: pd.DataFrame) -> pd.DataFrame:
         calc_average(df, target_col="投下資本")
     ]
     for s in stock_average:
-        df_with_drivers = df_with_drivers.merge(s, on=["企業名称", "年度"], how="left")
+        df_with_drivers = df_with_drivers.merge(s, on=["企業名称", "年度"], how="right")
     # 比率系のドライバの設定　分子-分母-ドライバの名称のタプルの配列で指定
     ratio_drivers = [("売上原価", "売上高合計", "売上原価率"),
                      ("販売費及び一般管理費", "売上高合計", "販管費率"),
@@ -57,4 +57,4 @@ def calc_roic_tree_drivers(df: pd.DataFrame) -> pd.DataFrame:
                      ("売上高合計", "棚卸資産_平残", "棚卸資産回転率")]
     for d in ratio_drivers:
         df_with_drivers[d[2]] = df_with_drivers[d[0]] / df_with_drivers[d[1]]
-    return df_with_drivers
+    return df_with_drivers.dropna()
