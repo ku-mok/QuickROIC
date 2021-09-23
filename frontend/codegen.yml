@@ -1,5 +1,7 @@
 overwrite: true
-schema: "http://backend:8000"
+schema:
+  - "http://backend:8000"
+  - "localSchema.graphql"
 documents: "src/**/*.{ts,tsx}"
 generates:
   src/generated/graphql.ts:
