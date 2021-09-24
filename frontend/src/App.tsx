@@ -7,6 +7,7 @@ import {
 import theme from "./theme";
 import Home from "./page/Home";
 import NewFile from "./page/NewFile";
+import Table from "./page/Table";
 
 const Providers: React.FC = (props) => (
   <BrowserRouter>
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/new" exact>
           <NewFile />
+        </Route>
+        <Route path="/table" exact>
+          <Table />
         </Route>
       </Switch>
     </Providers>

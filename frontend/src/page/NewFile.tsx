@@ -61,6 +61,7 @@ const NewFile: React.FC = () => {
     {
       onCompleted(data) {
         localCompanyDataVar(data.uploadSpeedaExcel?.companyData);
+        console.info(data.uploadSpeedaExcel?.companyData);
         window.setTimeout(() => history.push("/table"), 1500);
       },
       onError(error) {
