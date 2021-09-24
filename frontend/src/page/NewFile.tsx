@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import Template from "../template/Template";
 import { Typography } from "@mui/material";
-import UploadButton from "../atom/UploadButton";
-import UploadArea from "../molecules/UploadArea";
+import FileUploader from "../organisms/FileUploader";
 import gql from "graphql-tag";
 import { useHistory } from "react-router";
 import { UploadExcelDocument } from "../generated/graphql";
@@ -36,19 +35,7 @@ export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
   return (
     <Template>
       <Typography variant="h5">新規データ分析</Typography>
-      <UploadArea
-        acceptedFiles={props.acceptedFiles}
-        setAcceptedFiles={props.setAcceptedFiles}
-      />
-      <UploadButton
-        successText={props.successText}
-        errorText={props.errorText}
-        loading={props.loading}
-        disable={props.acceptedFiles.length === 0}
-        handleButtonClick={props.handleUpload}
-      >
-        アップロードして分析を実施
-      </UploadButton>
+      <FileUploader {...props} />
     </Template>
   );
 };
