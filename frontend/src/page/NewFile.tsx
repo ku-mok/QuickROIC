@@ -42,7 +42,7 @@ const NewFile: React.FC = () => {
         localCompanyDataVar(localData);
         isDataLoadedVar(true);
         console.info(localData);
-        window.setTimeout(() => history.push("/table"), 1500);
+        window.setTimeout(() => history.push("/table"), 800);
       },
       onError(error) {
         console.error(error.message);
@@ -59,7 +59,11 @@ const NewFile: React.FC = () => {
         setAcceptedFiles,
         handleUpload,
         successText: !!(!error && data)
-          ? `${data?.uploadSpeedaExcel?.companyData?.length}社のデータを読み取りました。データ確認画面に遷移します。`
+          ? `${
+              new Set(
+                data?.uploadSpeedaExcel?.companyData?.map((c) => c.companyName)
+              ).size
+            }社のデータを読み取りました。データ確認画面に遷移します。`
           : undefined,
         loading,
         errorText: error
