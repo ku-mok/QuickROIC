@@ -14,6 +14,7 @@ import { Button } from "@mui/material";
 import { Save } from "@mui/icons-material";
 import styled from "styled-components";
 import ColumnFilterModal from "../organisms/ColumnFilterModal";
+import { createCsvString } from "../util/createCsvString";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -22,12 +23,25 @@ const ButtonContainer = styled.div`
   column-gap: 10px;
 `;
 const Table: React.FC = () => {
-  const [tableData, setTableData] = useState<CompanyData[]>([]);
+  const tabItems = useTabItems();
+  //　モーダル関連
   const [modalOpen, setModalOpen] = useState(false);
   const handleModalClose = () => setModalOpen(false);
-  const [expandedGroupIds, setExpandedGroupIds] = useState<
-    ReadonlySet<unknown>
-  >(new Set());
+  // ローカルに保存されたエクセル読み取り結果を引っ張る
+  useQuery(GetLocalDataDocument, {
+    onCompleted: (data) => {
+      setTableData(data.localCompanyData);
+      // 企業名称で畳んだのをデフォルトでは開いた状態にする
+      setExpandedGroupIds(
+        new Set(data.localCompanyData.map((d) => d.companyName))
+      );
+      // ROIC計算を行う
+      refetchRoic({ data: data.localCompanyData });
+    },
+  });
+  const [columnFilter, setColumnFilter] = useState<string[] | undefined>(
+    undefined
+  );
   // ROICやドライバを計算するクエリ
   const { refetch: refetchRoic } = useQuery(CalcRoicWaccDocument, {
     // ローカルの状態を読み込むまではとりあえず空配列を投げる
@@ -47,21 +61,12 @@ const Table: React.FC = () => {
     // TODO: Error処理。バックエンド側も実装必要。
     onError: (err) => console.error(err),
   });
-  // ローカルに保存されたエクセル読み取り結果を引っ張る
-  useQuery(GetLocalDataDocument, {
-    onCompleted: (data) => {
-      setTableData(data.localCompanyData);
-      // 企業名称で畳んだのをデフォルトでは開いた状態にする
-      setExpandedGroupIds(
-        new Set(data.localCompanyData.map((d) => d.companyName))
-      );
-      // ROIC計算を行う
-      refetchRoic({ data: data.localCompanyData });
-    },
-  });
-  const [columnFilter, setColumnFilter] = useState<string[] | undefined>(
-    undefined
-  );
+  // テーブル関連
+  const [tableData, setTableData] = useState<CompanyData[]>([]);
+  const [expandedGroupIds, setExpandedGroupIds] = useState<
+    ReadonlySet<unknown>
+  >(new Set());
+  // テーブルの行列を作る
   const rows = useMemo(() => toTableRow(tableData), [tableData]);
   const columns = useMemo(
     () =>
@@ -91,7 +96,18 @@ const Table: React.FC = () => {
       setColumnFilter(column);
     }
   };
-  const tabItems = useTabItems();
+  // CSVダウンロード
+  const handleDownloadClick = () => {
+    const csvString = createCsvString(rows, filteredColumns);
+    const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
+    const blob = new Blob([bom, csvString], { type: "text/csv" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "QuickRoicOutput.csv";
+    a.click();
+    a.remove();
+  };
   return (
     <Template tabItems={tabItems} tabSelected={2}>
       <ColumnFilterModal
@@ -110,7 +126,11 @@ const Table: React.FC = () => {
         >
           表示カラムの設定
         </Button>
-        <Button startIcon={<Save />} variant="contained">
+        <Button
+          startIcon={<Save />}
+          variant="contained"
+          onClick={handleDownloadClick}
+        >
           Download As CSV
         </Button>
       </ButtonContainer>
