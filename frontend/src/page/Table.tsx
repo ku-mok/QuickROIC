@@ -11,7 +11,7 @@ import { useMemo, useState } from "react";
 import rowGrouper from "lodash.groupby";
 import { toTableColumn, toTableRow } from "../util/dataTransform";
 import { Button } from "@mui/material";
-import { Save } from "@mui/icons-material";
+import { Save, PermDataSetting } from "@mui/icons-material";
 import styled from "styled-components";
 import ColumnFilterModal from "../organisms/ColumnFilterModal";
 import { createCsvString } from "../util/createCsvString";
@@ -119,7 +119,7 @@ const Table: React.FC = () => {
       />
       <ButtonContainer>
         <Button
-          startIcon={<Save />}
+          startIcon={<PermDataSetting />}
           variant="contained"
           color="secondary"
           onClick={() => setModalOpen(true)}

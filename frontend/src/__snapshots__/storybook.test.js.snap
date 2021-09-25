@@ -254,8 +254,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -277,8 +277,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -300,8 +300,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -477,8 +477,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -500,8 +500,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -523,8 +523,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -704,8 +704,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -727,8 +727,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -750,8 +750,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -931,8 +931,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -954,8 +954,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -977,8 +977,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1182,8 +1182,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1205,8 +1205,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1228,8 +1228,8 @@ Array [
           </button>
           <button
             aria-selected={false}
-            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary"
-            disabled={false}
+            className="MuiButtonBase-root-JTLGk xjigV MuiButtonBase-root Mui-disabled MuiTab-root-bdaqDk emOllg MuiTab-root MuiTab-textColorPrimary Mui-disabled"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
