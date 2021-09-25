@@ -152,6 +152,17 @@ it("create columns data", () => {
   expect(toTableColumn(data).length).toEqual(expected.length);
 });
 
+it("filter columns", () => {
+  const expected = [
+    "企業名称",
+    "年度",
+    "有利子負債残高",
+    "支払利息割引料",
+  ].map((c) => ({ key: c, name: c }));
+  const filter = ["SPEEDA業界分類", "β"];
+  expect(toTableColumn(data, filter)).toEqual(expect.arrayContaining(expected));
+  expect(toTableColumn(data, filter).length).toEqual(expected.length);
+});
 it("create row data", () => {
   const expected = [
     {

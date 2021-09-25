@@ -1,10 +1,18 @@
 import { CompanyData } from "../generated/graphql";
-export function toTableColumn(data: CompanyData[]) {
-  return [
+export function toTableColumn(
+  data: CompanyData[],
+  filter: string[] | undefined = undefined
+) {
+  const columns = [
     "企業名称",
     "年度",
     ...new Set(data.map((d) => d.metrics.metricsName)),
   ].map((c) => ({ key: c, name: c }));
+  if (filter) {
+    return columns.filter((x) => ![...filter].includes(x.key));
+  } else {
+    return columns;
+  }
 }
 
 export function toTableRow(data: CompanyData[]) {
