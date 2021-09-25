@@ -1,11 +1,11 @@
 import { useTabItems } from "./tabItems";
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useReactiveVar } from "@apollo/client";
 import Template from "../template/Template";
 import FileUploader from "../organisms/FileUploader";
 import { useHistory } from "react-router";
 import { UploadExcelDocument } from "../generated/graphql";
-import { localCompanyDataVar } from "../store";
+import { isDataLoadedVar, localCompanyDataVar } from "../store";
 
 export type NewFilePresProps = {
   acceptedFiles: File[];
@@ -17,7 +17,8 @@ export type NewFilePresProps = {
 };
 
 export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
-  const tabItems = useTabItems();
+  const isDataLoaded = useReactiveVar(isDataLoadedVar);
+  const tabItems = useTabItems(isDataLoaded);
   return (
     <Template tabItems={tabItems} tabSelected={1}>
       <FileUploader {...props} />
@@ -39,6 +40,7 @@ const NewFile: React.FC = () => {
           return others;
         });
         localCompanyDataVar(localData);
+        isDataLoadedVar(true);
         console.info(localData);
         window.setTimeout(() => history.push("/table"), 1500);
       },

@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useHistory } from "react-router";
 import { HeaderProps } from "../organisms/Header";
-export const useTabItems: () => HeaderProps["tabItems"] = () => {
+export const useTabItems = (isDataLoaded = true): HeaderProps["tabItems"] => {
   const history = useHistory();
-  const tabItems = useMemo(
+  const tabItems = useMemo<HeaderProps["tabItems"]>(
     () => [
       {
         label: "Home",
@@ -16,17 +16,20 @@ export const useTabItems: () => HeaderProps["tabItems"] = () => {
       {
         label: "データ確認",
         onClick: () => history.push("/table"),
+        disabled: !isDataLoaded,
       },
       {
         label: "ROIC-WACCグラフ",
         onClick: () => history.push("/scatter"),
+        disabled: !isDataLoaded,
       },
       {
         label: "ROICツリー",
         onClick: () => history.push("/tree"),
+        disabled: !isDataLoaded,
       },
     ],
-    [history]
+    [history, isDataLoaded]
   );
   return tabItems;
 };

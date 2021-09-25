@@ -1,9 +1,12 @@
 import { Typography } from "@mui/material";
 import { useTabItems } from "./tabItems";
 import Template from "../template/Template";
+import { useReactiveVar } from "@apollo/client";
+import { isDataLoadedVar } from "../store";
 
 const Home: React.FC = () => {
-  const tabItems = useTabItems();
+  const isDataLoaded = useReactiveVar(isDataLoadedVar);
+  const tabItems = useTabItems(isDataLoaded);
   return (
     <Template tabItems={tabItems} tabSelected={0}>
       <Typography variant="h4" component="h2">

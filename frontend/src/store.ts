@@ -3,6 +3,7 @@ import { CompanyData } from "./generated/graphql";
 import { gql } from "graphql-tag";
 
 export const localCompanyDataVar = makeVar<CompanyData[]>([]);
+export const isDataLoadedVar = makeVar(false);
 export const typePolicies: TypePolicies = {
   Query: {
     fields: {
