@@ -1,9 +1,11 @@
 import { Typography } from "@mui/material";
+import { useTabItems } from "./tabItems";
 import Template from "../template/Template";
 
 const Home: React.FC = () => {
+  const tabItems = useTabItems();
   return (
-    <Template>
+    <Template tabItems={tabItems} tabSelected={0}>
       <Typography variant="h4" component="h2">
         QuickRoicとは
       </Typography>

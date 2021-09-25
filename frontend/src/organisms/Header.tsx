@@ -1,19 +1,15 @@
 import React from "react";
-import {
-  AppBar,
-  IconButton,
-  IconButtonProps,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import styled from "styled-components";
-import { Menu } from "@mui/icons-material";
+import { AppBar, Paper, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import { useHistory } from "react-router";
 
-const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 export type HeaderProps = {
-  handleIconButtonClick: IconButtonProps["onClick"];
   children: React.ReactText;
+  tabItems: {
+    label: string;
+    onClick: () => void;
+    disabled?: boolean;
+  }[];
+  tabSelected: number;
 };
 const Header: React.FC<HeaderProps> = (props) => {
   const history = useHistory();
@@ -22,21 +18,24 @@ const Header: React.FC<HeaderProps> = (props) => {
   };
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar position="sticky">
         <Toolbar>
-          <IconButton
-            color="inherit"
-            onClick={props.handleIconButtonClick}
-            edge="start"
-          >
-            <Menu />
-          </IconButton>
           <Typography variant="h5" onClick={handleTitleClick}>
             {props.children}
           </Typography>
         </Toolbar>
       </AppBar>
-      <Offset />
+      <Paper>
+        <Tabs value={props.tabSelected}>
+          {props.tabItems.map((tab) => (
+            <Tab
+              label={tab.label}
+              disabled={tab.disabled}
+              onClick={tab.onClick}
+            />
+          ))}
+        </Tabs>
+      </Paper>
     </>
   );
 };

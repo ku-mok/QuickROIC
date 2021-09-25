@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { useTabItems } from "./tabItems";
 import { GetLocalDataDocument } from "../generated/graphql";
 import Template from "../template/Template";
 import DataGrid from "react-data-grid";
@@ -18,8 +19,9 @@ const Table: React.FC = () => {
   const [expandedGroupIds, setExpandedGroupIds] = useState<
     ReadonlySet<unknown>
   >(() => new Set<unknown>(data?.localCompanyData.map((d) => d.companyName)));
+  const tabItems = useTabItems();
   return (
-    <Template>
+    <Template tabItems={tabItems} tabSelected={2}>
       <DataGrid
         rows={rows}
         columns={columns}

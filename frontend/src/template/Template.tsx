@@ -1,8 +1,4 @@
-import { useState } from "react";
 import Header from "../organisms/Header";
-import SideMenu from "../organisms/SideMenu";
-import SideMenuItem from "../molecules/SideMenuItem";
-import { AddCircle } from "@mui/icons-material";
 import styled from "styled-components";
 
 const ContentContainer = styled.div`
@@ -10,26 +6,21 @@ const ContentContainer = styled.div`
   margin-left: 1vw;
   margin-right: 3vw;
 `;
-const Template: React.FC<{ children: React.ReactNode }> = (props) => {
-  const [sideMenuOpen, setSideMenuOpen] = useState(false);
-  const handleSideMenuOpen = () => {
-    setSideMenuOpen(true);
-  };
-  const handleSideMenuClose = () => {
-    setSideMenuOpen(false);
-  };
+export type TemplateProps = {
+  children: React.ReactNode;
+  tabItems: {
+    label: string;
+    onClick: () => void;
+    disabled?: boolean;
+  }[];
+  tabSelected: number;
+};
+const Template: React.FC<TemplateProps> = (props) => {
   return (
     <>
-      <Header handleIconButtonClick={handleSideMenuOpen}>QuickRoic</Header>
-      <SideMenu
-        open={sideMenuOpen}
-        onOpen={handleSideMenuOpen}
-        onClose={handleSideMenuClose}
-      >
-        <SideMenuItem icon={<AddCircle />} linkTo="/new">
-          新規分析
-        </SideMenuItem>
-      </SideMenu>
+      <Header tabItems={props.tabItems} tabSelected={props.tabSelected}>
+        QuickRoic
+      </Header>
       <ContentContainer>{props.children}</ContentContainer>
     </>
   );
