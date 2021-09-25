@@ -29,6 +29,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <Tabs value={props.tabSelected}>
           {props.tabItems.map((tab) => (
             <Tab
+              key={tab.label}
               label={tab.label}
               disabled={tab.disabled}
               onClick={tab.onClick}

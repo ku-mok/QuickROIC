@@ -6,7 +6,15 @@ import DataGrid from "react-data-grid";
 import { useMemo, useState } from "react";
 import rowGrouper from "lodash.groupby";
 import { toTableColumn, toTableRow } from "../util/dataTransform";
+import { Button } from "@mui/material";
+import { Save } from "@mui/icons-material";
+import styled from "styled-components";
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+`;
 const Table: React.FC = () => {
   const { data } = useQuery(GetLocalDataDocument);
   const rows = useMemo(() => (data ? toTableRow(data.localCompanyData) : []), [
@@ -22,10 +30,15 @@ const Table: React.FC = () => {
   const tabItems = useTabItems();
   return (
     <Template tabItems={tabItems} tabSelected={2}>
+      <ButtonContainer>
+        <Button startIcon={<Save />} variant="contained">
+          Download As CSV
+        </Button>
+      </ButtonContainer>
       <DataGrid
         rows={rows}
         columns={columns}
-        style={{ height: "85vh" }}
+        style={{ height: "80vh" }}
         groupBy={["企業名称"]}
         rowGrouper={rowGrouper}
         className="rdg-light"

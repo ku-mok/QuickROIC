@@ -2,7 +2,6 @@ import { useTabItems } from "./tabItems";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import Template from "../template/Template";
-import { Typography } from "@mui/material";
 import FileUploader from "../organisms/FileUploader";
 import gql from "graphql-tag";
 import { useHistory } from "react-router";
@@ -36,7 +35,6 @@ export const NewFilePres: React.FC<NewFilePresProps> = (props) => {
   const tabItems = useTabItems();
   return (
     <Template tabItems={tabItems} tabSelected={1}>
-      <Typography variant="h5">新規データ分析</Typography>
       <FileUploader {...props} />
     </Template>
   );
