@@ -32,8 +32,14 @@ const NewFile: React.FC = () => {
     UploadExcelDocument,
     {
       onCompleted(data) {
-        localCompanyDataVar(data.uploadSpeedaExcel?.companyData);
-        console.info(data.uploadSpeedaExcel?.companyData);
+        const localData = data.uploadSpeedaExcel?.companyData.map((d) => {
+          const { __typename: __data, ...others } = d;
+          const { __typename: __metrics, ...othersMetrics } = d.metrics;
+          others.metrics = othersMetrics;
+          return others;
+        });
+        localCompanyDataVar(localData);
+        console.info(localData);
         window.setTimeout(() => history.push("/table"), 1500);
       },
       onError(error) {

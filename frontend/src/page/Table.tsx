@@ -1,6 +1,10 @@
 import { useQuery } from "@apollo/client";
 import { useTabItems } from "./tabItems";
-import { CompanyData, GetLocalDataDocument } from "../generated/graphql";
+import {
+  CalcRoicWaccDocument,
+  CompanyData,
+  GetLocalDataDocument,
+} from "../generated/graphql";
 import Template from "../template/Template";
 import DataGrid from "react-data-grid";
 import { useMemo, useState } from "react";
@@ -16,16 +20,32 @@ const ButtonContainer = styled.div`
   margin: 10px 0;
 `;
 const Table: React.FC = () => {
-  const [tableData, SetTableData] = useState<CompanyData[]>([]);
+  const [tableData, setTableData] = useState<CompanyData[]>([]);
   const [expandedGroupIds, setExpandedGroupIds] = useState<
     ReadonlySet<unknown>
   >(new Set());
+  const { refetch: refetchRoic } = useQuery(CalcRoicWaccDocument, {
+    variables: { data: [] },
+    onCompleted: (data) => {
+      setTableData((prevData) =>
+        [...prevData, ...data.calcRoic, ...data.calcDrivers].sort((a, b) =>
+          a.companyName === b.companyName
+            ? 0
+            : a.companyName > b.companyName
+            ? 1
+            : -1
+        )
+      );
+    },
+    onError: (err) => console.error(err),
+  });
   useQuery(GetLocalDataDocument, {
     onCompleted: (data) => {
-      SetTableData(data.localCompanyData);
+      setTableData(data.localCompanyData);
       setExpandedGroupIds(
         new Set(data.localCompanyData.map((d) => d.companyName))
       );
+      refetchRoic({ data: data.localCompanyData });
     },
   });
   const rows = useMemo(() => toTableRow(tableData), [tableData]);

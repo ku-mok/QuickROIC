@@ -27,3 +27,24 @@ export const GET_LOCAL_DATA = gql`
     }
   }
 `;
+
+export const CALC_ROIC_WACC = gql`
+  query calcRoicWacc($data: [CompanyDataInput]) {
+    calcDrivers(data: $data) {
+      companyName
+      metrics {
+        metricsName
+        metricsValues
+        metricsYears
+      }
+    }
+    calcRoic(data: $data) {
+      companyName
+      metrics {
+        metricsName
+        metricsValues
+        metricsYears
+      }
+    }
+  }
+`;
