@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useTabItems } from "./tabItems";
-import { GetLocalDataDocument } from "../generated/graphql";
+import { CompanyData, GetLocalDataDocument } from "../generated/graphql";
 import Template from "../template/Template";
 import DataGrid from "react-data-grid";
 import { useMemo, useState } from "react";
@@ -16,17 +16,20 @@ const ButtonContainer = styled.div`
   margin: 10px 0;
 `;
 const Table: React.FC = () => {
-  const { data } = useQuery(GetLocalDataDocument);
-  const rows = useMemo(() => (data ? toTableRow(data.localCompanyData) : []), [
-    data,
-  ]);
-  const columns = useMemo(
-    () => (data ? toTableColumn(data.localCompanyData) : []),
-    [data]
-  );
+  const [tableData, SetTableData] = useState<CompanyData[]>([]);
   const [expandedGroupIds, setExpandedGroupIds] = useState<
     ReadonlySet<unknown>
-  >(() => new Set<unknown>(data?.localCompanyData.map((d) => d.companyName)));
+  >(new Set());
+  useQuery(GetLocalDataDocument, {
+    onCompleted: (data) => {
+      SetTableData(data.localCompanyData);
+      setExpandedGroupIds(
+        new Set(data.localCompanyData.map((d) => d.companyName))
+      );
+    },
+  });
+  const rows = useMemo(() => toTableRow(tableData), [tableData]);
+  const columns = useMemo(() => toTableColumn(tableData), [tableData]);
   const tabItems = useTabItems();
   return (
     <Template tabItems={tabItems} tabSelected={2}>
@@ -38,7 +41,7 @@ const Table: React.FC = () => {
       <DataGrid
         rows={rows}
         columns={columns}
-        style={{ height: "80vh" }}
+        style={{ height: "75vh" }}
         groupBy={["企業名称"]}
         rowGrouper={rowGrouper}
         className="rdg-light"

@@ -3,25 +3,10 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import Template from "../template/Template";
 import FileUploader from "../organisms/FileUploader";
-import gql from "graphql-tag";
 import { useHistory } from "react-router";
 import { UploadExcelDocument } from "../generated/graphql";
 import { localCompanyDataVar } from "../store";
 
-export const UPLOAD_EXCEL = gql`
-  mutation UploadExcel($files: [Upload!]!) {
-    uploadSpeedaExcel(files: $files) {
-      companyData {
-        companyName
-        metrics {
-          metricsName
-          metricsValues
-          metricsYears
-        }
-      }
-    }
-  }
-`;
 export type NewFilePresProps = {
   acceptedFiles: File[];
   setAcceptedFiles: (files: File[]) => void;
