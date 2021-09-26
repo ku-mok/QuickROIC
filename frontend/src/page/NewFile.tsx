@@ -1,4 +1,4 @@
-import { useTabItems } from "./tabItems";
+import { useTabItems } from "./hooks/useTabItems";
 import React, { useState } from "react";
 import { useMutation, useReactiveVar } from "@apollo/client";
 import Template from "../template/Template";

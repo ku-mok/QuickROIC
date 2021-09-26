@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useHistory } from "react-router";
-import { HeaderProps } from "../organisms/Header";
+import { HeaderProps } from "../../organisms/Header";
 export const useTabItems = (isDataLoaded = true): HeaderProps["tabItems"] => {
   const history = useHistory();
   const tabItems = useMemo<HeaderProps["tabItems"]>(

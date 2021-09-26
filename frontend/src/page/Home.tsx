@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { useTabItems } from "./tabItems";
+import { useTabItems } from "./hooks/useTabItems";
 import Template from "../template/Template";
 import { useReactiveVar } from "@apollo/client";
 import { isDataLoadedVar } from "../store";
