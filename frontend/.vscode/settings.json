@@ -2,7 +2,10 @@
 	"cSpell.words": [
 		"craco",
 		"Dropzone",
-		"Storyshots"
+		"Roic",
+		"Speeda",
+		"Storyshots",
+		"Wacc"
 	],
 	"files.watcherExclude": {
 		"**/generated/**": true
