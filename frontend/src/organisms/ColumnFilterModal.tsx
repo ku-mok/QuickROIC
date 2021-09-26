@@ -57,7 +57,7 @@ const ColumnFilterModal: React.FC<ColumnFilterModalProps> = (props) => {
         </FlexContainer>
         <List>
           {props.columns.map((col) => (
-            <ListItem onClick={(e) => props.handleFilterChange(col)}>
+            <ListItem onClick={(e) => props.handleFilterChange(col)} key={col}>
               <ListItemIcon>
                 {props.filter && props.filter.includes(col) ? (
                   <CheckBoxOutlineBlank />
