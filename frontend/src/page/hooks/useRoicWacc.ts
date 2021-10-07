@@ -6,18 +6,16 @@ import {
   CompanyData,
 } from "../../generated/graphql";
 
-export const useRoicWacc = (
-  additionalCallBackFunc?: (data: CompanyData[]) => void
-) => {
+export const useRoicWacc = (onComplete?: (data: CompanyData[]) => void) => {
   const [data, setData] = useState<CompanyData[]>([]);
   // ローカルに保存されたエクセル読み取り結果を引っ張る
   useQuery(GetLocalDataDocument, {
-    onCompleted: (queryResponse) => {
+    onCompleted: async (queryResponse) => {
       const localCompanyData = queryResponse.localCompanyData;
       setData(localCompanyData);
       // ROIC計算を行う
-      refetchRoic({ data: localCompanyData });
-      additionalCallBackFunc && additionalCallBackFunc(localCompanyData);
+      await refetchRoic({ data: localCompanyData });
+      onComplete && onComplete(localCompanyData);
     },
   });
   // ROICやドライバを計算するクエリ

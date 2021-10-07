@@ -8,6 +8,7 @@ import theme from "./theme";
 import Home from "./page/Home";
 import NewFile from "./page/NewFile";
 import Table from "./page/Table";
+import Scatter from "./page/Scatter";
 
 const Providers: React.FC = (props) => (
   <BrowserRouter>
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/table" exact>
           <Table />
+        </Route>
+        <Route path="/scatter" exact>
+          <Scatter />
         </Route>
       </Switch>
     </Providers>

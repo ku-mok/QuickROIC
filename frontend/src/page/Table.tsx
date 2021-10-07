@@ -19,7 +19,7 @@ const ButtonContainer = styled.div`
 const Table: React.FC = () => {
   const tabItems = useTabItems();
   // データの読み出しと計算
-  const { data: tableData } = useRoicWacc((data) =>
+  const { data: tableData, loading, error } = useRoicWacc((data) =>
     setExpandedGroupIds(new Set(data.map((d) => d.companyName)))
   );
   //　モーダル関連
@@ -73,7 +73,12 @@ const Table: React.FC = () => {
     a.remove();
   };
   return (
-    <Template tabItems={tabItems} tabSelected={2}>
+    <Template
+      tabItems={tabItems}
+      tabSelected={2}
+      loading={loading}
+      error={error}
+    >
       <ColumnFilterModal
         handleFilterChange={handleFilterChange}
         open={modalOpen}

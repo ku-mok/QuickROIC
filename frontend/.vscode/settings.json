@@ -2,10 +2,18 @@
 	"cSpell.words": [
 		"craco",
 		"Dropzone",
+		"plotly",
+		"rangemode",
 		"Roic",
+		"showlegend",
 		"Speeda",
 		"Storyshots",
-		"Wacc"
+		"textposition",
+		"tozero",
+		"Wacc",
+		"xaxis",
+		"yaxis",
+		"yref"
 	],
 	"files.watcherExclude": {
 		"**/generated/**": true

@@ -1,4 +1,5 @@
 import { CompanyData } from "../generated/graphql";
+import { Data } from "plotly.js";
 export function toTableColumn(
   data: CompanyData[],
   filter: string[] | undefined = undefined
@@ -60,4 +61,38 @@ export function toTableRow(data: CompanyData[]) {
     rows.push(row);
   });
   return rows;
+}
+
+export function toScatterData(
+  data: CompanyData[],
+  x: string,
+  y: string,
+  yearIndex: number,
+  companyColor: { [company: string]: number | string }
+): Data[] {
+  const companies = [...new Set(data.map((d) => d.companyName))];
+  const xAxisData = data
+    .filter((d) => d.metrics.metricsName === x)
+    .reduce(
+      (prev, current) =>
+        prev.set(current.companyName, current.metrics.metricsValues[yearIndex]),
+      new Map()
+    );
+  const yAxisData = data
+    .filter((d) => d.metrics.metricsName === y)
+    .reduce(
+      (prev, current) =>
+        prev.set(current.companyName, current.metrics.metricsValues[yearIndex]),
+      new Map()
+    );
+  return companies.map((company) => ({
+    x: [xAxisData.get(company)],
+    y: [yAxisData.get(company)],
+    type: "scatter",
+    mode: "text+markers",
+    name: company,
+    text: company,
+    textposition: "top center",
+    marker: { size: 15, color: companyColor[company] },
+  }));
 }
