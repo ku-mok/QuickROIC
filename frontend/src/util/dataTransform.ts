@@ -96,3 +96,41 @@ export function toScatterData(
     marker: { size: 15, color: companyColor[company] },
   }));
 }
+
+export function toTreeData(
+  data: CompanyData[],
+  companyColor: { [company: string]: number | string }
+): Data[] {
+  const metrics_position: {
+    [metric: string]: { xaxis: string; yaxis: string };
+  } = {
+    ROIC: { xaxis: "x", yaxis: "y" },
+    投下資本回転率: { xaxis: "x2", yaxis: "y2" },
+    NOPATマージン: { xaxis: "x2", yaxis: "y3" },
+    固定資産回転率: { xaxis: "x3", yaxis: "y4" },
+    運転資本回転率: { xaxis: "x3", yaxis: "y5" },
+    販管費率: { xaxis: "x3", yaxis: "y6" },
+    売上原価率: { xaxis: "x3", yaxis: "y7" },
+  };
+  return [
+    "ROIC",
+    "投下資本回転率",
+    "NOPATマージン",
+    "固定資産回転率",
+    "運転資本回転率",
+    "販管費率",
+    "売上原価率",
+  ].flatMap((metricsName) =>
+    data
+      .filter((d) => d.metrics.metricsName === metricsName)
+      .map((d) => ({
+        x: d.metrics.metricsYears,
+        y: d.metrics.metricsValues,
+        type: "scatter",
+        mode: "lines+markers",
+        xaxis: metrics_position[d.metrics.metricsName].xaxis,
+        yaxis: metrics_position[d.metrics.metricsName].yaxis,
+        marker: { color: companyColor[d.companyName] },
+      }))
+  );
+}
