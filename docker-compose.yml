@@ -9,6 +9,7 @@ services:
       - 8000
     volumes:
       - "./backend:/app"
+    command: "make start"
   frontend:
     build:
       context: ./frontend
