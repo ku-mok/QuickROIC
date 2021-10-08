@@ -7,4 +7,3 @@ ENV PYTHONUNBUFFERED=1 \
     POETRY_VIRTUALENVS_CREATE=false 
 COPY ./pyproject.toml ./poetry.*  /app/
 RUN pip install poetry && poetry install
-CMD make start

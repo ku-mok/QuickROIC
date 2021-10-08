@@ -718,6 +718,66 @@ snapshots['QuerySnapshot::test_calc_roic_driver 1'] = {
                 }
             },
             {
+                'companyName': 'Sample1',
+                'metrics': {
+                    'metricsName': '運転資本',
+                    'metricsValues': [
+                        174922,
+                        169954,
+                        202449,
+                        207443,
+                        202487
+                    ],
+                    'metricsYears': [
+                        2015,
+                        2016,
+                        2017,
+                        2018,
+                        2019
+                    ]
+                }
+            },
+            {
+                'companyName': 'Sample1',
+                'metrics': {
+                    'metricsName': '運転資本_平残',
+                    'metricsValues': [
+                        165918.5,
+                        172438,
+                        186201.5,
+                        204946,
+                        204965
+                    ],
+                    'metricsYears': [
+                        2015,
+                        2016,
+                        2017,
+                        2018,
+                        2019
+                    ]
+                }
+            },
+            {
+                'companyName': 'Sample1',
+                'metrics': {
+                    'metricsName': '運転資本回転率',
+                    'metricsValues': [
+                        5.310004610697421,
+                        5.382212737331678,
+                        5.212761443919625,
+                        4.946781103315019,
+                        5.1719561876417925
+                    ],
+                    'metricsYears': [
+                        2015,
+                        2016,
+                        2017,
+                        2018,
+                        2019
+                    ]
+                }
+            },
+            {
                 'companyName': 'Sample2',
                 'metrics': {
                     'metricsName': 'EBITDA',
@@ -1327,6 +1387,66 @@ snapshots['QuerySnapshot::test_calc_roic_driver 1'] = {
                         22423,
                         23206.5,
                         24159.5
+                    ],
+                    'metricsYears': [
+                        2015,
+                        2016,
+                        2017,
+                        2018,
+                        2019
+                    ]
+                }
+            },
+            {
+                'companyName': 'Sample2',
+                'metrics': {
+                    'metricsName': '運転資本',
+                    'metricsValues': [
+                        29627,
+                        34518,
+                        35030,
+                        37792,
+                        38132
+                    ],
+                    'metricsYears': [
+                        2015,
+                        2016,
+                        2017,
+                        2018,
+                        2019
+                    ]
+                }
+            },
+            {
+                'companyName': 'Sample2',
+                'metrics': {
+                    'metricsName': '運転資本_平残',
+                    'metricsValues': [
+                        27426.5,
+                        32072.5,
+                        34774,
+                        36411,
+                        37962
+                    ],
+                    'metricsYears': [
+                        2015,
+                        2016,
+                        2017,
+                        2018,
+                        2019
+                    ]
+                }
+            },
+            {
+                'companyName': 'Sample2',
+                'metrics': {
+                    'metricsName': '運転資本回転率',
+                    'metricsValues': [
+                        13.921499279893533,
+                        12.88776989632863,
+                        12.537585552424225,
+                        12.181346296448876,
+                        12.120488909962594
                     ],
                     'metricsYears': [
                         2015,
