@@ -10,6 +10,7 @@ import NewFile from "./page/NewFile";
 import Table from "./page/Table";
 import Scatter from "./page/Scatter";
 import Tree from "./page/Tree";
+import { ReactElement } from "react";
 
 const Providers: React.FC = (props) => (
   <BrowserRouter>
@@ -20,25 +21,37 @@ const Providers: React.FC = (props) => (
     </StyledEngineProvider>
   </BrowserRouter>
 );
+const routing: { path: string; component: ReactElement }[] = [
+  {
+    path: "/",
+    component: <Home />,
+  },
+  {
+    path: "/new",
+    component: <NewFile />,
+  },
+  {
+    path: "/table",
+    component: <Table />,
+  },
+  {
+    path: "/scatter",
+    component: <Scatter />,
+  },
+  {
+    path: "/tree",
+    component: <Tree />,
+  },
+];
 function App() {
   return (
     <Providers>
       <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/new" exact>
-          <NewFile />
-        </Route>
-        <Route path="/table" exact>
-          <Table />
-        </Route>
-        <Route path="/scatter" exact>
-          <Scatter />
-        </Route>
-        <Route path="/tree" exact>
-          <Tree />
-        </Route>
+        {routing.map((r) => (
+          <Route path={r.path} exact>
+            {r.component}
+          </Route>
+        ))}
       </Switch>
     </Providers>
   );
