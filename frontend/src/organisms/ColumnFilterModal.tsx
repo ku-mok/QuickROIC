@@ -21,14 +21,12 @@ export type ColumnFilterModalProps = {
 };
 const ModalContent = styled.div`
   background-color: white;
-`;
-const StyledModal = styled(Modal)`
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
   width: 50%;
   max-height: 50%;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -30%);
   overflow: scroll;
 `;
 const FlexContainer = styled.div`
@@ -44,7 +42,7 @@ const ColumnFilterModal: React.FC<ColumnFilterModalProps> = (props) => {
     props.handleFilterChange([]);
   }, [props]);
   return (
-    <StyledModal open={props.open} onClose={props.onClose}>
+    <Modal open={props.open} onClose={props.onClose}>
       <ModalContent>
         <FlexContainer>
           <Typography>表示するカラムを選択</Typography>
@@ -70,7 +68,7 @@ const ColumnFilterModal: React.FC<ColumnFilterModalProps> = (props) => {
           ))}
         </List>
       </ModalContent>
-    </StyledModal>
+    </Modal>
   );
 };
 export default ColumnFilterModal;
