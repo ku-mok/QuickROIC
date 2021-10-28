@@ -28,6 +28,11 @@ export const useTabItems = (isDataLoaded = true): HeaderProps["tabItems"] => {
         onClick: () => history.push("/tree"),
         disabled: !isDataLoaded,
       },
+      {
+        label: "表示設定",
+        onClick: () => history.push("/setting"),
+        disabled: !isDataLoaded,
+      },
     ],
     [history, isDataLoaded]
   );

@@ -5,7 +5,11 @@ import Template from "../template/Template";
 import FileUploader from "../organisms/FileUploader";
 import { useHistory } from "react-router";
 import { UploadExcelDocument } from "../generated/graphql";
-import { isDataLoadedVar, localCompanyDataVar } from "../store";
+import {
+  companySettingVar,
+  isDataLoadedVar,
+  localCompanyDataVar,
+} from "../store";
 
 export type NewFilePresProps = {
   acceptedFiles: File[];
@@ -41,6 +45,35 @@ const NewFile: React.FC = () => {
         });
         localCompanyDataVar(localData);
         isDataLoadedVar(true);
+        const colors = [
+          "#4E79A7",
+          "#A0CBE8",
+          "#F28E2B",
+          "#FFBE7D",
+          "#59A14F",
+          "#8CD17D",
+          "#B6992D",
+          "#F1CE63",
+          "#499894",
+          "#86BCB6",
+          "#E15759",
+          "#FF9D9A",
+          "#79706E",
+          "#BAB0AC",
+          "#D37295",
+          "#FABFD2",
+          "#B07AA1",
+          "#D4A6C8",
+          "#9d7660",
+          "#D7B5A6",
+        ];
+        companySettingVar(
+          [...new Set(localData?.map((d) => d.companyName))].map((d, i) => ({
+            name: d,
+            visibility: true,
+            color: colors[i % colors.length],
+          }))
+        );
         console.info(localData);
         window.setTimeout(() => history.push("/table"), 800);
       },

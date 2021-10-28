@@ -11,6 +11,7 @@ import Table from "./page/Table";
 import Scatter from "./page/Scatter";
 import Tree from "./page/Tree";
 import { ReactElement } from "react";
+import Setting from "./page/Setting";
 
 const Providers: React.FC = (props) => (
   <BrowserRouter>
@@ -41,6 +42,10 @@ const routing: { path: string; component: ReactElement }[] = [
   {
     path: "/tree",
     component: <Tree />,
+  },
+  {
+    path: "/setting",
+    component: <Setting />,
   },
 ];
 function App() {
