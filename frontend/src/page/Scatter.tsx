@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { PlayArrow, Stop } from "@mui/icons-material";
+import { companySettingVar } from "../store";
+import { useReactiveVar } from "@apollo/client";
 
 const Scatter: React.FC = () => {
   const tabItems = useTabItems();
@@ -28,18 +30,35 @@ const Scatter: React.FC = () => {
   const { data, loading, error } = useRoicWacc((data) => {
     setYearIndex(data[0].metrics.metricsYears.length - 2);
   });
-  // TODO: 企業の表示設定
+  const companySetting = useReactiveVar(companySettingVar);
   const companyColor = useMemo<{ [key: string]: string }>(
-    () => ({
-      Sample1: "red",
-      Sample2: "blue",
-      Sample3: "green",
-    }),
-    []
+    () =>
+      companySetting.reduce(
+        (prev, setting) =>
+          Object.assign(prev, { [setting.name]: setting.color }),
+        {}
+      ),
+    [companySetting]
+  );
+  const companyVisibility = useMemo<{ [key: string]: string }>(
+    () =>
+      companySetting.reduce(
+        (prev, setting) =>
+          Object.assign(prev, { [setting.name]: setting.visibility }),
+        {}
+      ),
+    [companySetting]
   );
   const roicWaccData = useMemo(
-    () => toScatterData(data, "ROIC", "WACC", yearIndex, companyColor),
-    [companyColor, data, yearIndex]
+    () =>
+      toScatterData(
+        data.filter((d) => companyVisibility[d.companyName]),
+        "ROIC",
+        "WACC",
+        yearIndex,
+        companyColor
+      ),
+    [companyColor, companyVisibility, data, yearIndex]
   );
   const roicWaccLayout: Partial<Layout> = {
     showlegend: false,
@@ -76,13 +95,13 @@ const Scatter: React.FC = () => {
   const nopatCapitalData = useMemo(
     () =>
       toScatterData(
-        data,
+        data.filter((d) => companyVisibility[d.companyName]),
         "NOPATマージン",
         "投下資本回転率",
         yearIndex,
         companyColor
       ),
-    [companyColor, data, yearIndex]
+    [companyColor, companyVisibility, data, yearIndex]
   );
   const nopatCapitalLayout: Partial<Layout> = {
     showlegend: false,

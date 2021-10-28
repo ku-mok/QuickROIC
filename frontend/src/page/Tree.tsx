@@ -5,19 +5,31 @@ import Template from "../template/Template";
 import { useRoicWacc, useTabItems } from "./hooks";
 import { toTreeData } from "../util/dataTransform";
 import { Grid } from "@mui/material";
+import { useReactiveVar } from "@apollo/client";
+import { companySettingVar } from "../store";
 
 const Tree: React.FC = () => {
   const tabItems = useTabItems();
   const { data, loading, error } = useRoicWacc();
+  const companySetting = useReactiveVar(companySettingVar);
   const companyColor = useMemo<{ [key: string]: string }>(
-    () => ({
-      Sample1: "red",
-      Sample2: "blue",
-      Sample3: "green",
-    }),
-    []
+    () =>
+      companySetting.reduce(
+        (prev, setting) =>
+          Object.assign(prev, { [setting.name]: setting.color }),
+        {}
+      ),
+    [companySetting]
   );
-
+  const companyVisibility = useMemo<{ [key: string]: string }>(
+    () =>
+      companySetting.reduce(
+        (prev, setting) =>
+          Object.assign(prev, { [setting.name]: setting.visibility }),
+        {}
+      ),
+    [companySetting]
+  );
   const layout: Partial<Layout> = {
     annotations: [
       {
@@ -129,10 +141,14 @@ const Tree: React.FC = () => {
     },
     showlegend: false,
   };
-  const roicData = useMemo(() => toTreeData(data, companyColor), [
-    companyColor,
-    data,
-  ]);
+  const roicData = useMemo(
+    () =>
+      toTreeData(
+        data.filter((d) => companyVisibility[d.companyName]),
+        companyColor
+      ),
+    [companyColor, companyVisibility, data]
+  );
   return (
     <Template
       tabItems={tabItems}
