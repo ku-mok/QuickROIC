@@ -40,7 +40,7 @@ export const useRoicWacc = (onComplete?: (data: CompanyData[]) => void) => {
           )
         );
       },
-      // TODO: Error処理。バックエンド側も実装必要。
+      // TODO: Error処理。バックエンド側も実装必要。 Issue #3
       onError: (err) => console.error(err),
     }
   );

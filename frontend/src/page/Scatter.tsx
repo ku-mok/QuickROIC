@@ -80,7 +80,7 @@ const Scatter: React.FC = () => {
         type: "line",
         x0: 0,
         y0: 0,
-        // TODO: ROICとWACCのマックスを設定する
+        // TODO: ROICとWACCのマックスを設定する Issue #2
         x1: 0.2,
         y1: 0.2,
         xref: "x",
