@@ -1,5 +1,5 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Chip, List, ListItem, Modal, Typography } from "@mui/material";
+import { Chip, List, ListItem, Modal } from "@mui/material";
 import { useState } from "react";
 import { SketchPicker, SketchPickerProps } from "react-color";
 import { useModal } from "../page/hooks";

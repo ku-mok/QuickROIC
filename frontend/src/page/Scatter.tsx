@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Template from "../template/Template";
 import { useRoicWacc, useTabItems, useIntervalFunc } from "./hooks";
 import Plot from "react-plotly.js";

@@ -1,5 +1,5 @@
 import { useTabItems } from "./useTabItems";
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react-hooks";
 
 describe("useTabItems", () => {
   it("enable all items when data loaded", () => {

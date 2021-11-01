@@ -4,7 +4,6 @@ import Plot from "react-plotly.js";
 import Template from "../template/Template";
 import { useRoicWacc, useTabItems } from "./hooks";
 import { toTreeData } from "../util/dataTransform";
-import { Grid } from "@mui/material";
 import { useReactiveVar } from "@apollo/client";
 import { companySettingVar } from "../store";
 
