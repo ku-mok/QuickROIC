@@ -12,13 +12,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: python lint
-        run: docker-compose exec backend make lint
+        run: docker-compose run backend make lint
       - name: python test
-        run: docker-compose exec backend make test
+        run: docker-compose run backend make test
       - name: eslint
-        run: docker-compose exec frontend npx eslint src
+        run: docker-compose run frontend npx eslint src
       - name: js test
-        run: docker-compose exec frontend  yarn test
+        run: docker-compose run frontend  yarn test
