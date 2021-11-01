@@ -4,6 +4,7 @@ from __future__ import annotations
 import pandas as pd
 import itertools
 from typing import Literal
+import numpy as np
 
 
 def speeda_excel_to_dataframe(book_path_list: list[str]) -> pd.DataFrame:
@@ -72,37 +73,44 @@ def dataframe_to_dict(df: pd.DataFrame, columns: list[str] | Literal["all"] = "a
         df = df.copy()
     else:
         df = df[['企業名称', '年度'] + columns]
-    # 年度・指標を横、企業名称を縦にした上で辞書に変換
     df_dict = df.set_index(["企業名称", "年度"])\
         .stack()\
         .reset_index()\
         .rename(columns={"level_2": "指標名", 0: "値"})\
-        .pivot_table(index=["企業名称"], columns=["年度", "指標名"], aggfunc="sum")\
+        .pivot_table(index=["企業名称", "指標名"], columns=["年度"], aggfunc="sum")\
         .stack(0)\
-        .reset_index(1)\
-        .drop(columns="level_1")\
+        .reset_index(2)\
+        .drop(columns="level_2")\
         .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)\
         .to_dict("index")
     # GraphQLで扱いやすい辞書に変換
     return [
         {
             "company_name": company_name,
-            "metrics": [{
-                "year": k[0],
-                "metrics_name": k[1],
-                "value": v
-            } for k, v in value.items()]
+            "metrics": {
+                "metrics_name": metrics_name,
+                "metrics_years": list(values.keys()),
+                "metrics_values": list(values.values())}
+
         }
-        for company_name, value in df_dict.items()
+        for [company_name, metrics_name], values in df_dict.items()
     ]
 
 
 def dict_to_dataframe(input_dict):
 
-    tmp = pd.DataFrame(
-        list(itertools.chain.from_iterable(
-            [[m | {"company_name": item["company_name"]} for m in item['metrics']] for item in input_dict]))
-    ).pivot_table(index=["company_name", "year"], columns=["metrics_name"], aggfunc="sum")\
-     .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)
+    tmp = pd.DataFrame(list(itertools.chain.from_iterable([
+        [
+            {
+                "company_name": item["company_name"],
+                "metrics_name": item["metrics"]["metrics_name"],
+                "year":item["metrics"]["metrics_years"][i],
+                "value":item["metrics"]["metrics_values"][i]
+            }
+            for i in range(len(item["metrics"]["metrics_years"]))
+        ]
+        for item in input_dict])))\
+        .pivot_table(index=["company_name", "year"], columns=["metrics_name"], aggfunc=sum)\
+        .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)
     tmp.columns = [c[1] for c in tmp.columns]
     return tmp.reset_index().rename(columns={"company_name": "企業名称", "year": "年度"})

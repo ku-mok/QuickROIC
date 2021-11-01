@@ -36,16 +36,19 @@ def calc_roic_wacc(df: pd.DataFrame,
 
 def calc_roic_tree_drivers(df: pd.DataFrame) -> pd.DataFrame:
     df_with_drivers = df.copy()
+    if "運転資本" not in df_with_drivers.columns:
+        df_with_drivers["運転資本"] = df["売上債権"] + df["棚卸資産"] - df["買入債務"]
     # ストック系の指標を平残化(AP, AR, FA, WIP, IC)
     stock_average = [
-        calc_average(df, target_col="売上債権"),
-        calc_average(df, target_col="固定資産"),
-        calc_average(df, target_col="買入債務"),
-        calc_average(df, target_col="棚卸資産"),
-        calc_average(df, target_col="投下資本")
+        calc_average(df_with_drivers, target_col="売上債権"),
+        calc_average(df_with_drivers, target_col="固定資産"),
+        calc_average(df_with_drivers, target_col="買入債務"),
+        calc_average(df_with_drivers, target_col="棚卸資産"),
+        calc_average(df_with_drivers, target_col="投下資本"),
+        calc_average(df_with_drivers, target_col="運転資本")
     ]
     for s in stock_average:
-        df_with_drivers = df_with_drivers.merge(s, on=["企業名称", "年度"], how="left")
+        df_with_drivers = df_with_drivers.merge(s, on=["企業名称", "年度"], how="right")
     # 比率系のドライバの設定　分子-分母-ドライバの名称のタプルの配列で指定
     ratio_drivers = [("売上原価", "売上高合計", "売上原価率"),
                      ("販売費及び一般管理費", "売上高合計", "販管費率"),
@@ -53,8 +56,9 @@ def calc_roic_tree_drivers(df: pd.DataFrame) -> pd.DataFrame:
                      ("売上高合計", "投下資本_平残", "投下資本回転率"),
                      ("売上高合計", "固定資産_平残", "固定資産回転率"),
                      ("売上高合計", "売上債権_平残", "売上債権回転率"),
+                     ("売上高合計", "運転資本_平残", "運転資本回転率"),
                      ("売上原価", "買入債務_平残", "仕入債務回転率"),
                      ("売上高合計", "棚卸資産_平残", "棚卸資産回転率")]
     for d in ratio_drivers:
         df_with_drivers[d[2]] = df_with_drivers[d[0]] / df_with_drivers[d[1]]
-    return df_with_drivers
+    return df_with_drivers.dropna()

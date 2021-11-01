@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "../.devcontainer/docker-compose-frontend.yml"
+  ],
+  "service": "frontend",
+  "workspaceFolder": "/workspace/frontend",
+  "settings": {},
+  "extensions": [
+	"orta.vscode-jest",
+	"esbenp.prettier-vscode",
+	"dbaeumer.vscode-eslint",
+	"jpoissonnier.vscode-styled-components",
+	"streetsidesoftware.code-spell-checker",
+	"apollographql.vscode-apollo",
+	"gruntfuggly.todo-tree"
+],
+  "shutdownAction": "none"
+}

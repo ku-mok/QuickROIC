@@ -4,6 +4,20 @@ services:
     build:
       context: ./backend
     ports:
-      - "5000:5000"
+      - "8000:8000"
+    expose:
+      - 8000
     volumes:
       - "./backend:/app"
+    command: "make start"
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./frontend:/app"
+      - "node_modules:/app/node_modules"
+    command: "yarn start"
+volumes:
+  node_modules:

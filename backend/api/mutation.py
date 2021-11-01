@@ -2,7 +2,7 @@ from graphene.types.field import Field
 from graphene.types.structures import List
 from api.object import CompanyData
 from roic.transform import dataframe_to_dict, speeda_excel_to_dataframe
-from graphene import Mutation, Boolean, ObjectType
+from graphene import Mutation, Boolean, ObjectType, NonNull
 from graphene_file_upload.scalars import Upload
 from tempfile import NamedTemporaryFile, _TemporaryFileWrapper
 
@@ -11,7 +11,7 @@ class FileUploadMutation(Mutation):
     class Arguments:
         files = List(Upload)
     ok = Boolean()
-    company_data = Field(List(CompanyData))
+    company_data = Field(NonNull(List(NonNull(CompanyData))))
 
     async def mutate(self, info, files):
         tmp_file_list: list[_TemporaryFileWrapper] = []

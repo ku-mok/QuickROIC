@@ -411,9 +411,9 @@ class MutationTest(unittest.TestCase, GraphQLFileUploadTestMixin):
                     companyData{
                         companyName
                             metrics {
-                                year
                                 metricsName
-                                value
+                                metricsYears
+                                metricsValues
                             }
                     }
                 }
@@ -423,6 +423,3 @@ class MutationTest(unittest.TestCase, GraphQLFileUploadTestMixin):
                                    "files.0": test_files[0], "files.1": test_files[1]})
         # 正常処理完了の確認
         self.assertResponseNoErrors(response)
-        # エクセルを正しくパースして返しているかの確認
-        actual_company_data = response.json()["data"]["uploadSpeedaExcel"]["companyData"]
-        self.assertEqual(self.expected_company_data, actual_company_data)

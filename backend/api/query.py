@@ -1,5 +1,5 @@
 from roic.analytics import calc_roic_tree_drivers
-from graphene import ObjectType, Field, List
+from graphene import ObjectType, Field, List, NonNull
 import graphene
 from graphene.types.scalars import String
 from .object import CompanyData, CompanyDataInput
@@ -12,13 +12,13 @@ class User(graphene.ObjectType):
 
 class Query(ObjectType):
     calc_roic = Field(
-        List(CompanyData),
+        NonNull(List(NonNull(CompanyData))),
         description="ROIC計算を行うクエリ。dataに計算を行うデータを渡し、metricsに必要なカラムを指定する。デフォルト値（空配列）の場合すべてのカラムが帰る",
         data=List(CompanyDataInput),
         metrics=List(String, default_value=[])
     )
     calc_drivers = Field(
-        List(CompanyData),
+        NonNull(List(NonNull(CompanyData))),
         description="ROICドライバ計算を行うクエリ。dataに計算を行うデータを渡し、metricsに必要なカラムを指定する。デフォルト値（空配列）の場合すべてのカラムが帰る",
         data=List(CompanyDataInput),
         metrics=List(String, default_value=[])
