@@ -6,10 +6,17 @@
 
 ## How to Access
 
-Internal use only for the present
+https://ku-mok.github.io/QuickROIC/
 
-## How to Deploy
+## How to Use APIs
 
-frontenをビルドしたしたArtifactを静的ホストしたうえで、backendのコンテナを以下の環境変数を設定した上で実行する
+(To Be Written)
 
-- XXX (To be written)
+## Contribute
+
+-　Docker-compose upでローカルの実行環境はセットアップ可能
+-　PR時にJS/PythonのLintとTestを実施しているのでパスするように
+
+## Deployment Secrets
+- REACT_APP_GRAPHQL_ENDPOINT: バックエンドのGraphqlのエンドポイント
+- GRAPHQL_PORT: バックエンドのGraphqlのポート
