@@ -29,15 +29,20 @@ jobs:
         with:
           context: ./${{ matrix.target}}
           target: Dev
-          cache-from: type=registry,ref=ghcr.io/${{ github.actor }}/${{ matrix.target }}:ci
+          cache-from: type=registry,ref=ghcr.io/${{ github.actor }}/quickroic/${{ matrix.target }}:ci
           cache-to: type=inline 
           push: true
-          tags: ghcr.io/${{ github.actor }}/${{ matrix.target }}
-          labels: ci
+          tags: ghcr.io/${{ github.actor }}/quickroic/${{ matrix.target }}:ci
   python:
     runs-on: ubuntu-18.04
     needs: build
     steps:
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io 
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: linting
         run: docker run ghcr.io/${{ github.actor }}/backend:ci make lint
       - name: testing
@@ -46,6 +51,12 @@ jobs:
     runs-on: ubuntu-18.04
     needs: build
     steps:
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io 
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: linting
         run: docker run ghcr.io/${{ github.actor }}/frontend:ci npx eslint src
       - name: testing
