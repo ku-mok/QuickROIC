@@ -1,4 +1,4 @@
-FROM python:3.9-buster
+FROM python:3.9-buster As Dev
 WORKDIR /app
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
