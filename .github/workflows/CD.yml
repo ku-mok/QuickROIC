@@ -48,3 +48,23 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+  python:
+    runs-on: ubuntu-18.04
+    needs: build
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: ssh config
+        run: mkdir ~/.ssh && echo "$SSH_SECRET" >> ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa && echo "$KNOWN_HOSTS" >> ~/.ssh/known_hosts && echo "$SSH_CONFIG" >> ~/.ssh/config
+        env:
+          SSH_SECRET: ${{secrets.SSH_SECRET}}
+          KNOWN_HOSTS: ${{secrets.KNOWN_HOSTS}}
+          SSH_CONFIG: ${{secrets.SSH_CONFIG}}
+      - name: create .env file
+        run: echo "GRAPHQL_PORT=${{secrets.GRAPHQL_PORT}}" > .env
+      - name: send .env
+        run: rsync -avh ./.env DeploymentServer:~/quickroic/
+      - name: send docker-compose
+        run: rsync -avh ./docker-compose.prod.yml DeploymentServer:~/quickroic/
+      - name: compose up
+        run: ssh DeploymentServer "cd ~/quickroic;mv docker-compose.prod.yml docker-compose.yml;docker-compose pull;docker-compose up -d"

@@ -1,0 +1,8 @@
+version: "3"
+services:
+  backend:
+    image: ghcr.io/ku-mok/quickroic/backend:latest
+    ports:
+      - "${GRAPHQL_PORT}:8000"
+    command: "make start"
+    restart: always
