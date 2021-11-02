@@ -44,11 +44,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: pulling image
-        run: docker pull ghcr.io/${{ github.actor }}/backend:ci
+        run: docker pull ghcr.io/${{ github.actor }}/quickroic/backend:ci
       - name: linting
-        run: docker run ghcr.io/${{ github.actor }}/backend:ci make lint
+        run: docker run ghcr.io/${{ github.actor }}/quickroic/backend:ci make lint
       - name: testing
-        run: docker run ghcr.io/${{ github.actor }}/backend:ci make test
+        run: docker run ghcr.io/${{ github.actor }}/quickroic/backend:ci make test
   js:
     runs-on: ubuntu-18.04
     needs: build
@@ -60,9 +60,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: pulling image
-        run: docker pull ghcr.io/${{ github.actor }}/frontend:ci
+        run: docker pull ghcr.io/${{ github.actor }}/quickroic/frontend:ci
       - name: linting
-        run: docker run ghcr.io/${{ github.actor }}/frontend:ci npx eslint src
+        run: docker run ghcr.io/${{ github.actor }}/quickroic/frontend:ci npx eslint src
       - name: testing
-        run: docker run ghcr.io/${{ github.actor }}/frontend:ci yarn test
+        run: docker run ghcr.io/${{ github.actor }}/quickroic/frontend:ci yarn test
 
