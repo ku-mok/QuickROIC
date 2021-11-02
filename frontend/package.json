@@ -94,5 +94,6 @@
       "last 1 safari version"
     ]
   },
-  "preinstall": "typesync || :"
+  "preinstall": "typesync || :",
+  "homepage": "https://ku-mok.github.io/quickroic/"
 }
