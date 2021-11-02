@@ -43,6 +43,8 @@ jobs:
           registry: ghcr.io 
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: pulling image
+        run: docker pull ghcr.io/${{ github.actor }}/backend:ci
       - name: linting
         run: docker run ghcr.io/${{ github.actor }}/backend:ci make lint
       - name: testing
@@ -57,6 +59,8 @@ jobs:
           registry: ghcr.io 
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: pulling image
+        run: docker pull ghcr.io/${{ github.actor }}/frontend:ci
       - name: linting
         run: docker run ghcr.io/${{ github.actor }}/frontend:ci npx eslint src
       - name: testing
