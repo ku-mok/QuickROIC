@@ -95,5 +95,5 @@
     ]
   },
   "preinstall": "typesync || :",
-  "homepage": "https://ku-mok.github.io/quickroic/"
+  "homepage": "https://ku-mok.github.io/QuickROIC/"
 }
