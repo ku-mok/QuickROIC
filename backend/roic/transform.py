@@ -4,7 +4,6 @@ from __future__ import annotations
 import pandas as pd
 import itertools
 from typing import Literal
-import numpy as np
 
 
 def speeda_excel_to_dataframe(book_path_list: list[str]) -> pd.DataFrame:

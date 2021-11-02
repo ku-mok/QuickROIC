@@ -62,7 +62,7 @@ jobs:
       - name: pulling image
         run: docker pull ghcr.io/${{ github.actor }}/quickroic/frontend:ci
       - name: linting
-        run: docker run ghcr.io/${{ github.actor }}/quickroic/frontend:ci npx eslint src
+        run: docker run ghcr.io/${{ github.actor }}/quickroic/frontend:ci bash -c "npx eslint src/**/*.{tsx,ts}" 
       - name: testing
-        run: docker run ghcr.io/${{ github.actor }}/quickroic/frontend:ci yarn test
+        run: docker run ghcr.io/${{ github.actor }}/quickroic/frontend:ci bash -c "CI=true yarn test"
 
