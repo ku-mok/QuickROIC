@@ -32,8 +32,8 @@ jobs:
           cache-from: type=registry,ref=ghcr.io/${{ github.actor }}/${{ matrix.target }}:ci
           cache-to: type=inline 
           push: true
-          image: ghcr.io/${{ github.actor }}/${{ matrix.target }}
-          tag: ci
+          tag: ghcr.io/${{ github.actor }}/${{ matrix.target }}
+          label: ci
   python:
     runs-on: ubuntu-18.04
     needs: build
