@@ -14,7 +14,7 @@ import { ReactElement } from "react";
 import Setting from "./page/Setting";
 
 const Providers: React.FC = (props) => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <StyledEngineProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <SsThemeProvider theme={theme}>{props.children}</SsThemeProvider>
