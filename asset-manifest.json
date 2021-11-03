@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/QuickROIC/static/css/main.4a4137e4.chunk.css",
-    "main.js": "/QuickROIC/static/js/main.ef81790d.chunk.js",
-    "main.js.map": "/QuickROIC/static/js/main.ef81790d.chunk.js.map",
+    "main.js": "/QuickROIC/static/js/main.9f8eeb36.chunk.js",
+    "main.js.map": "/QuickROIC/static/js/main.9f8eeb36.chunk.js.map",
     "runtime-main.js": "/QuickROIC/static/js/runtime-main.53142c85.js",
     "runtime-main.js.map": "/QuickROIC/static/js/runtime-main.53142c85.js.map",
-    "static/js/2.63be527f.chunk.js": "/QuickROIC/static/js/2.63be527f.chunk.js",
-    "static/js/2.63be527f.chunk.js.map": "/QuickROIC/static/js/2.63be527f.chunk.js.map",
+    "static/js/2.17738cfc.chunk.js": "/QuickROIC/static/js/2.17738cfc.chunk.js",
+    "static/js/2.17738cfc.chunk.js.map": "/QuickROIC/static/js/2.17738cfc.chunk.js.map",
     "static/js/3.7cf50af9.chunk.js": "/QuickROIC/static/js/3.7cf50af9.chunk.js",
     "static/js/3.7cf50af9.chunk.js.map": "/QuickROIC/static/js/3.7cf50af9.chunk.js.map",
     "index.html": "/QuickROIC/index.html",
     "static/css/main.4a4137e4.chunk.css.map": "/QuickROIC/static/css/main.4a4137e4.chunk.css.map",
-    "static/js/2.63be527f.chunk.js.LICENSE.txt": "/QuickROIC/static/js/2.63be527f.chunk.js.LICENSE.txt"
+    "static/js/2.17738cfc.chunk.js.LICENSE.txt": "/QuickROIC/static/js/2.17738cfc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.53142c85.js",
-    "static/js/2.63be527f.chunk.js",
+    "static/js/2.17738cfc.chunk.js",
     "static/css/main.4a4137e4.chunk.css",
-    "static/js/main.ef81790d.chunk.js"
+    "static/js/main.9f8eeb36.chunk.js"
   ]
 }
