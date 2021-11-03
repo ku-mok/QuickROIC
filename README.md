@@ -6,10 +6,5 @@
 
 ## How to Access
 
-Internal use only for the present
+https://ku-mok.github.io/QuickROIC/
 
-## How to Deploy
-
-frontenをビルドしたしたArtifactを静的ホストしたうえで、backendのコンテナを以下の環境変数を設定した上で実行する
-
-- XXX (To be written)
