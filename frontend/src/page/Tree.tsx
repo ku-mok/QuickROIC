@@ -138,7 +138,8 @@ const Tree: React.FC = () => {
 
       anchor: "x3",
     },
-    showlegend: false,
+    showlegend: true,
+    legend: { orientation: "h" },
   };
   const roicData = useMemo(
     () =>
