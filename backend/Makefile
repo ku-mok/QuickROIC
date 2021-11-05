@@ -7,4 +7,4 @@ lint:
 coverage:
 	coverage report -m
 start:
-	uvicorn api.server:app --host 0.0.0.0 --reload
+	gunicorn -k uvicorn.workers.UvicornWorker api.server:app -w 4 --bind 0.0.0.0:8000 --reload
