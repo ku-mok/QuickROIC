@@ -31,7 +31,7 @@ const Home: React.FC = () => {
               「支払利息割引料」 「企業価値」
               「時価総額(自己株式調整後)」です。検索条件を指定した状態のURLは{" "}
               <a
-                href="https://www.ub-speeda.com/search/company/searchcompany/path/9a3326e6-90e1-47b8-b814-7994e8c67a07"
+                href="https://www.ub-speeda.com/search/company/searchcompany/path/11b51eac-9ff8-48b4-9969-debc582e9077"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
               </a>
               および
               <a
-                href="https://www.ub-speeda.com/search/company/searchcompany/path/1859013e-9e60-4db7-be25-50bcdc8305ac"
+                href="https://www.ub-speeda.com/search/company/searchcompany/path/071a9639-05b2-44f3-ab73-abafbbe9074e"
                 target="_blank"
                 rel="noreferrer"
               >
