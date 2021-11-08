@@ -2,6 +2,7 @@ from __future__ import annotations
 """データの変形を行うモジュール
 """
 import pandas as pd
+import numpy as np
 import itertools
 from typing import Literal
 
@@ -68,10 +69,24 @@ def speeda_excel_to_dataframe(book_path_list: list[str]) -> pd.DataFrame:
 
 
 def dataframe_to_dict(df: pd.DataFrame, columns: list[str] | Literal["all"] = "all"):
+    # カラムのフィルタリング
     if columns == "all":
         df = df.copy()
     else:
         df = df[['企業名称', '年度'] + columns]
+
+    # Floatをintに変換（できる場合は）
+    def float_to_int(x):
+        if type(x) is str:
+            return x
+        elif pd.isna(x):
+            return x
+        elif int(x) == x:
+            return int(x)
+        else:
+            return x
+
+    # 変換処理
     df_dict = df.set_index(["企業名称", "年度"])\
         .stack()\
         .reset_index()\
@@ -80,7 +95,8 @@ def dataframe_to_dict(df: pd.DataFrame, columns: list[str] | Literal["all"] = "a
         .stack(0)\
         .reset_index(2)\
         .drop(columns="level_2")\
-        .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)\
+        .applymap(float_to_int)\
+        .replace([np.nan], [None])\
         .to_dict("index")
     # GraphQLで扱いやすい辞書に変換
     return [

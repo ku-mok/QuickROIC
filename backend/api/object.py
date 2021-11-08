@@ -19,7 +19,7 @@ class Metrics(ObjectType):
         description = "財務指標を表す型で年度・指標名称・値を持つ"
     metrics_name = String(required=True)
     metrics_years = NonNull(List(NonNull(Int)))
-    metrics_values = NonNull(List(NonNull(MetricsValue)))
+    metrics_values = NonNull(List(MetricsValue))
 
 
 class CompanyData(ObjectType):
@@ -34,7 +34,7 @@ class MetricsInput(InputObjectType):
         description = "財務指標を表す型で年度・指標名称・値を持つ"
     metrics_name = String(required=True)
     metrics_years = NonNull(List(NonNull(Int)))
-    metrics_values = NonNull(List(NonNull(MetricsValue)))
+    metrics_values = NonNull(List(MetricsValue))
 
 
 class CompanyDataInput(InputObjectType):
