@@ -68,23 +68,26 @@ def speeda_excel_to_dataframe(book_path_list: list[str]) -> pd.DataFrame:
     return company_data.merge(company_master, on="企業名称", how="left")
 
 
+# Floatをintに変換（できる場合は）
+def float_to_int(x):
+    if type(x) is str:
+        return x
+    elif pd.isna(x):
+        return x
+    elif x == np.inf:
+        return 0
+    elif int(x) == x:
+        return int(x)
+    else:
+        return x
+
+
 def dataframe_to_dict(df: pd.DataFrame, columns: list[str] | Literal["all"] = "all"):
     # カラムのフィルタリング
     if columns == "all":
         df = df.copy()
     else:
         df = df[['企業名称', '年度'] + columns]
-
-    # Floatをintに変換（できる場合は）
-    def float_to_int(x):
-        if type(x) is str:
-            return x
-        elif pd.isna(x):
-            return x
-        elif int(x) == x:
-            return int(x)
-        else:
-            return x
 
     # 変換処理
     df_dict = df.set_index(["企業名称", "年度"])\
@@ -125,7 +128,8 @@ def dict_to_dataframe(input_dict):
             for i in range(len(item["metrics"]["metrics_years"]))
         ]
         for item in input_dict])))\
+        .dropna()\
         .pivot_table(index=["company_name", "year"], columns=["metrics_name"], aggfunc=sum)\
-        .applymap(lambda x: int(x) if (type(x) is not str and int(x) == x) else x)
+        .applymap(float_to_int)
     tmp.columns = [c[1] for c in tmp.columns]
     return tmp.reset_index().rename(columns={"company_name": "企業名称", "year": "年度"})
